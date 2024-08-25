@@ -22,7 +22,6 @@
       "@clients/*": ["./src/clients/*"],
       "@components/*": ["./src/components/*"],
       "@models/*": ["./src/models/*"],
-      "@ui/*": ["./src/ui/*"],
       "@usecases/*": ["./src/usecases/*"],
       "@utils/*": ["./src/utils/*"],
     }
