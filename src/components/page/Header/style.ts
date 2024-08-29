@@ -2,7 +2,7 @@ import { SxProps} from "@mui/material";
 
 
 export const body: SxProps = {
-    bgcolor: "transparent",
+    transition: "all 0.2s ease",
 }
 
 export const symbol: SxProps = {
