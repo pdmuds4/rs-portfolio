@@ -1,16 +1,14 @@
-"use client";
-
-import { s__parallax_body, s__parallax_text, s__parallax_name, s__parallax_about } from "./style";
+import * as styles from "./style";
 import { Box, Typography } from "@mui/material";
 
 const Parallax: React.FC = () => {
     return (
-        <Box sx={s__parallax_body}>
-            <Box sx={s__parallax_text}>
-                <Typography variant="h1" gutterBottom sx={s__parallax_name}>
+        <Box sx={styles.body}>
+            <Box sx={styles.text}>
+                <Typography variant="h1" gutterBottom sx={styles.name}>
                     Ryosuke Saiki
                 </Typography>
-                <Typography variant="h5" sx={s__parallax_about}>
+                <Typography variant="h5" sx={styles.about}>
                     Musashino University - Faculty of Data Science
                 </Typography>
             </Box>
