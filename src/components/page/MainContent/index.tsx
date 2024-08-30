@@ -9,7 +9,7 @@ const MainContent: React.FC<PropsWithChildren> = (props) => {
     return (
         <Box sx={styles.background_section}>
             <Container maxWidth="xl">
-                <Parallax speed={8}>
+                <Parallax speed={10}>
                     <Card sx={styles.body}>
                         <Box sx={styles.content}>
                             {props.children}

@@ -7,7 +7,7 @@ export const background_section: SxProps = {
 
 export const body: SxProps = {
     position: "absolute",
-    top: -200,
+    top: -150,
     width: "100%",
     boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.2)",
 }
