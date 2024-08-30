@@ -9,7 +9,11 @@ export default function Home() {
             <MainContent>
                 <About />
                 <HiddenDivider />
+
                 <HobbyLikes />
+                <HiddenDivider />
+                
+                
             </MainContent>
         </>
     );

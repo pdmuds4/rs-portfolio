@@ -1,8 +1,7 @@
-import { Divider, ImageList } from "@mui/material"
+import { Divider, ImageList, Container } from "@mui/material"
 import { Section, Heading } from "@components/ui"
 import * as styles from "./style"
 import ImageCell from "./ImageCell"
-import { title } from "process"
 
 const HobbyLikes: React.FC = () => {
     const data = [
@@ -34,20 +33,22 @@ const HobbyLikes: React.FC = () => {
                 Hobby & Likes
             </Heading>
             <Divider />
-            <ImageList 
-                sx={styles.list_body} 
-                cols={2} 
-                gap={1}
-            >
-                {data.map((item, index) => (
-                    <ImageCell 
-                        key={index}
-                        title={item.title}
-                        src={item.src}
-                        detail={item.detail}
-                    />
-                ))}
-            </ImageList>
+            <Container>
+                <ImageList 
+                    sx={styles.list_body}
+                    gap={1}
+                    cols={0}
+                >
+                    {data.map((item, index) => (
+                        <ImageCell 
+                            key={index}
+                            title={item.title}
+                            src={item.src}
+                            detail={item.detail}
+                        />
+                    ))}
+                </ImageList>
+            </Container>
         </Section>
     )
 }

@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ImageListItem, ImageListItemBar, Typography } from "@mui/material";
-import { Text } from "@components/ui";
+import { ImageListItem, ImageListItemBar, Typography, Box } from "@mui/material";
 import * as styles from "./style";
 
 const ImageCell: React.FC<{
@@ -16,12 +15,13 @@ const ImageCell: React.FC<{
             key={props.key}
             onMouseEnter={()=>toggleDetail(true)}
             onMouseLeave={()=>toggleDetail(false)}
+            sx={styles.list_body}
         >
             <ImageListItemBar
                 sx={styles.image_header}
                 title={
                     <Typography 
-                        sx={styles.image_title}
+                        sx={styles.image_title(showDetail)}
                     >
                         {props.title}
                     </Typography>
@@ -30,22 +30,18 @@ const ImageCell: React.FC<{
                 actionPosition="left"
             />
             <img 
-                style={styles.list_image}
+                style={styles.image}
                 src={props.src}
                 loading="lazy"
             />
             <ImageListItemBar
                 title={
-                    <Text>
+                    <Box sx={styles.detail_text}>
                         {props.detail}
-                    </Text>
+                    </Box>
                 }
-                sx={{
-                    opacity: showDetail ? 1 : 0,
-                    visibility: showDetail ? 'visible' : 'hidden',
-                    ...styles.image_detail
-                }}
-                
+                sx={styles.image_detail(showDetail)}
+
             />
         </ImageListItem>
     )
