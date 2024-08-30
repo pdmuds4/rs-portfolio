@@ -5,7 +5,7 @@ import * as styles from "./style"
 
 const About: React.FC = () => {
     return (
-        <Section>
+        <Section id="about">
             <Box sx={styles.avator_wrapper}>
                 <IconButton sx={styles.avator_button}>
                     <Image
