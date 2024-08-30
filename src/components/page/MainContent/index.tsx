@@ -1,13 +1,21 @@
+"use client";
 import { PropsWithChildren } from "react";
-import { Card } from "@mui/material";
-import { s__maincontent } from "./style";
+import { Box, Card } from "@mui/material";
+import { Parallax } from "react-scroll-parallax";
+import  * as styles  from "./style";
 
 
 const MainContent: React.FC<PropsWithChildren> = (props) => {
     return (
-        <Card>
-            {props.children}
-        </Card>
+        <Box sx={styles.background_section}>
+            <Parallax speed={8}>
+                <Card sx={styles.body}>
+                    <Box sx={styles.content}>
+                        {props.children}
+                    </Box>
+                </Card>
+            </Parallax>
+        </Box>
     );
 }
 
