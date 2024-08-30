@@ -5,6 +5,7 @@ export const body: SxProps = {
     backgroundImage: 'url("/parallax.png")',
     transform: "translate3d(0px, 0px, 0px);",
     alignItems: "center",
+    justifyContent: "center",
     backgroundSize: "cover",
     backgroundPosition: "75% 0",
     height: "90vh",

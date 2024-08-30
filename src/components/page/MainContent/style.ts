@@ -14,5 +14,4 @@ export const body: SxProps = {
 
 export const content: SxProps = {
     padding: { xs: "10px", md: "20px" },
-    
 }
