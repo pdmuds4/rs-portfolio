@@ -7,9 +7,6 @@ export default function Home() {
             <Header />
             <Parallax />
             <MainContent>
-                <Heading>
-                    Skills
-                </Heading>
             </MainContent>
         </>
     );
