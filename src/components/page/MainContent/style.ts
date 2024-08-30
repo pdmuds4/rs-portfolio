@@ -2,7 +2,7 @@ import { SxProps } from "@mui/material";
 
 export const background_section: SxProps = {
     position: "relative",
-    margin: { xs: "20px", md: "40px" }
+    margin: { xs: "10px", md: "20px" }
 }
 
 export const body: SxProps = {

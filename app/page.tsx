@@ -1,4 +1,5 @@
 import { MainContent, Parallax, Header } from "@components/page";
+import { Heading } from "@components/ui";
 
 export default function Home() {
     return (
@@ -6,8 +7,9 @@ export default function Home() {
             <Header />
             <Parallax />
             <MainContent>
-                <h1>This is the home page.</h1>
-                
+                <Heading>
+                    Skills
+                </Heading>
             </MainContent>
         </>
     );
