@@ -5,7 +5,7 @@ import * as styles from './styles';
 const Heading: React.FC<PropsWithChildren> = (props) => {
     return (
         <Typography
-            variant="h4"
+            variant="h6"
             sx={styles.heading}
             noWrap
         >
