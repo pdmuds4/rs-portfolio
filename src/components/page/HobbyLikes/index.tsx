@@ -1,4 +1,4 @@
-import { Divider, ImageList, Container } from "@mui/material"
+import { Divider, ImageList } from "@mui/material"
 import { Section, Heading } from "@components/ui"
 import * as styles from "./style"
 import ImageCell from "./ImageCell"
@@ -30,25 +30,23 @@ const HobbyLikes: React.FC = () => {
     return (
         <Section id="hobbylikes">
             <Heading>
-                Hobby & Likes
+                Hobby&Likes
             </Heading>
             <Divider />
-            <Container>
-                <ImageList 
-                    sx={styles.list_body}
-                    gap={1}
-                    cols={0}
-                >
-                    {data.map((item, index) => (
-                        <ImageCell 
-                            key={index}
-                            title={item.title}
-                            src={item.src}
-                            detail={item.detail}
-                        />
-                    ))}
-                </ImageList>
-            </Container>
+            <ImageList 
+                sx={styles.list_body}
+                gap={1}
+                cols={0}
+            >
+                {data.map((item, index) => (
+                    <ImageCell 
+                        key={index}
+                        title={item.title}
+                        src={item.src}
+                        detail={item.detail}
+                    />
+                ))}
+            </ImageList>
         </Section>
     )
 }
