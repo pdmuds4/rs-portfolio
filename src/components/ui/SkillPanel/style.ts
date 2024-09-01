@@ -1,7 +1,18 @@
 import { SxProps } from "@mui/material";
 
 export const body: SxProps = {
+    position: 'relative',
     padding: { xs: "5px", md: "20px" },
+    '&::after': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        width: '20%',
+        background: 'linear-gradient(to left, white, transparent)',
+        pointerEvents: 'none',
+    },
 }
 
 export const contain: SxProps = {

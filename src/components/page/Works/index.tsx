@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Divider, Card, Grid2 } from "@mui/material"
+import { Divider, Card, Grid2, Box } from "@mui/material"
 import * as styles from "./style";
 import { Section, Heading, DevelopCard, DevelopPanel } from "@components/ui"
 
@@ -40,7 +40,8 @@ const Works: React.FC = () => {
             <Divider />
             <Card sx={styles.card_body}>
                 <Grid2 container spacing={3}>
-                    <Grid2 size={{xs: 12, md: 5}} sx={styles.cards_carousel}>
+                    <Grid2 size={{xs: 12, md: 5}} sx={styles.carousel_wrapper}>
+                        <Box sx={styles.cards_carousel}>
                         {data.map((item, index) => (
                             <DevelopCard 
                                 key={index}
@@ -50,6 +51,7 @@ const Works: React.FC = () => {
                                 changePanel={() => setPanelApp(item)}
                             />
                         ))}
+                        </Box>
                     </Grid2>
                     <Grid2 size={{xs: 12, md: 7}}>
                         <DevelopPanel
