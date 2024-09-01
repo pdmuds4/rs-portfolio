@@ -1,5 +1,6 @@
 "use client";
-import { SkillCard, SkillPanel } from "@components/ui";
+import SkillCard from "../SkillCard";
+import SkillPanel from "../SkillPanel";
 
 const DatabasePanel: React.FC<{
     value: string;

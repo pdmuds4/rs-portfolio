@@ -2,7 +2,10 @@
 import { useState } from "react";
 import { Divider, Card, Grid2, Box } from "@mui/material"
 import * as styles from "./style";
-import { Section, Heading, DevelopCard, DevelopPanel } from "@components/ui"
+import { Section, Heading } from "@components/ui"
+
+import DevelopCard from "./DevelopCard";
+import DevelopPanel from "./DevelopPanel";
 
 const Works: React.FC = () => {
     const data = [

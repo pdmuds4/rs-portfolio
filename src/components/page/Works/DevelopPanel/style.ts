@@ -2,7 +2,8 @@ import { SxProps } from "@mui/material";
 
 export const body: SxProps = {
     height: "300px",
-    boxShadow: "0 2px 4px 0 rgba(0 0 0 / 20%)"
+    boxShadow: "0 2px 4px 0 rgba(0 0 0 / 20%)",
+    backgroundImage: "linear-gradient(135deg, #e8e8e8, #e6e6e6, #f5f5f5, #dddddd)",
 }
 
 export const container: SxProps = {

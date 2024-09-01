@@ -26,13 +26,13 @@ const DevelopPanel: React.FC<{
                         {props.title}
                     </Typography>
                     <ButtonGroup sx={styles.access}>
-                        <IconButton href={props.github}>
+                        <IconButton href={props.github} target="_blank">
                             <Tooltip title="Check for Github" arrow>
                                 <GitHub fontSize="large" color="inherit" />
                             </Tooltip>
                         </IconButton>
                         {props.link ? (
-                        <IconButton href={props.link}>
+                        <IconButton href={props.link} target="_blank">
                             <Tooltip title="Go to Application" arrow>
                                 <Public fontSize="large" color="primary" />
                             </Tooltip>
