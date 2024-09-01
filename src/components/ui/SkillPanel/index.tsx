@@ -10,11 +10,11 @@ const SkillPanel: React.FC<
     }>
 > = (props) => {
     return (
-        <TabPanel value={props.value}>
+        <TabPanel value={props.value} sx={styles.body}>
             <Typography align="center" sx={styles.title}>
                 {props.title}
             </Typography>
-            <Box sx={styles.body}>
+            <Box sx={styles.contain}>
                 {props.children}
             </Box>
         </TabPanel>

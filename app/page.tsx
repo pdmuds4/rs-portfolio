@@ -1,4 +1,4 @@
-import { MainContent, Parallax, Header, About, HobbyLikes, Skills } from "@components/page";
+import { MainContent, Parallax, Header, About, HobbyLikes, Skills, Works } from "@components/page";
 import { HiddenDivider } from "@components/ui";
 
 export default function Home() {
@@ -14,6 +14,9 @@ export default function Home() {
                 <HiddenDivider />
 
                 <Skills />
+                <HiddenDivider />
+
+                <Works />
                 <HiddenDivider />
                 
             </MainContent>

@@ -1,6 +1,10 @@
 import { SxProps } from "@mui/material";
 
 export const body: SxProps = {
+    padding: { xs: "5px", md: "20px" },
+}
+
+export const contain: SxProps = {
     display: 'flex',
     gap: 1,
     py: 1,
@@ -11,7 +15,7 @@ export const body: SxProps = {
         scrollSnapAlign: 'center',
         flexShrink: 0,
     },
-    '::-webkit-scrollbar': { display: 'none' },
+    // '::-webkit-scrollbar': { display: 'none' },
 }
 
 export const title: SxProps = {
