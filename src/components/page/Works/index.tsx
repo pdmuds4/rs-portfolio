@@ -34,10 +34,10 @@ const Works: React.FC = () => {
 
     return (
         <Section id="works">
-        <Heading>
-            Works
-        </Heading>
-        <Divider />
+            <Heading>
+                Works
+            </Heading>
+            <Divider />
             <Card sx={styles.card_body}>
                 <Grid2 container spacing={3}>
                     <Grid2 size={{xs: 12, md: 5}} sx={styles.cards_carousel}>

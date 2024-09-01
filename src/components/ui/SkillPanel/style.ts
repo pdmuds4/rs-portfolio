@@ -22,4 +22,5 @@ export const title: SxProps = {
     display: { xs: 'block', sm: 'none' },
     fontFamily: 'Times New Roman',
     fontSize: 20,
+    color: "#3C4858"
 }

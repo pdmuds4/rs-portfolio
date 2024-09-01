@@ -18,9 +18,14 @@ export const tabs_body: SxProps = {
     }
 }
 
+export const tab_icon: SxProps = {
+    color: "#3C4858"
+}
+
 export const tab_label: SxProps = {
     fontFamily: "Times New Roman",
-    display: { xs: 'none', sm: 'block' }
+    display: { xs: 'none', sm: 'block' },
+    color: "#3C4858"
 }
 
 export const tab_item: SxProps = {

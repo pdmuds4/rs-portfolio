@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
 import "./globals.css";
 import PageProvider from "./provider";
-
-// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Ryosuke Saiki's Portfolio",
@@ -17,7 +14,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ja">
-            <body /*className={inter.className}*/>
+            <body>
                 <PageProvider>
                     {children}
                 </PageProvider>

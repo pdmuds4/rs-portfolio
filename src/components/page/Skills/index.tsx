@@ -16,19 +16,31 @@ const Skills: React.FC = () => {
     const category_data = [
         {
             title: "FRONTEND",
-            icon: <DeveloperMode />,
+            icon: <DeveloperMode 
+                fontSize="large" 
+                sx={styles.tab_icon}
+            />,
         },
         {
             title: "BACKEND",
-            icon: <SettingsSuggest />,
+            icon: <SettingsSuggest 
+                fontSize="large" 
+                sx={styles.tab_icon}
+            />,
         },
         {
             title: "DATABASE",
-            icon: <Storage />,
+            icon: <Storage 
+                fontSize="large" 
+                sx={styles.tab_icon}
+            />,
         },
         {
             title: "DEVOPS",
-            icon: <CloudUpload />,
+            icon: <CloudUpload 
+                fontSize="large" 
+                sx={styles.tab_icon}
+            />,
         }
     ]
 
