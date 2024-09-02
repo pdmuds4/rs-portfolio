@@ -1,6 +1,7 @@
 import { SxProps } from "@mui/material";
 
 export const body: SxProps = {
+    bgcolor: "#3c4858",
     position: 'relative',
     padding: { xs: "5px", md: "20px" },
     '&::after': {
@@ -10,7 +11,7 @@ export const body: SxProps = {
         right: 0,
         bottom: 0,
         width: '20%',
-        background: 'linear-gradient(to left, white, transparent)',
+        background: 'linear-gradient(to left, #3c4858, transparent)',
         pointerEvents: 'none',
     },
 }
@@ -26,7 +27,7 @@ export const contain: SxProps = {
         scrollSnapAlign: 'center',
         flexShrink: 0,
     },
-    // '::-webkit-scrollbar': { display: 'none' },
+    '::-webkit-scrollbar': { display: 'none' },
 }
 
 export const title: SxProps = {

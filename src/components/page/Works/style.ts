@@ -3,6 +3,7 @@ import { SxProps } from "@mui/material";
 export const card_body: SxProps = {
     margin: "16px 0",
     padding: { xs: "5px", md: "20px" },
+    bgcolor: "#3c4858"
 }
 
 export const carousel_wrapper: SxProps = {
@@ -14,7 +15,7 @@ export const carousel_wrapper: SxProps = {
         right: 0,
         bottom: 0,
         height: '20%',
-        background: 'linear-gradient(to top, white, transparent)',
+        background: 'linear-gradient(to top, #3c4858, transparent)',
         pointerEvents: 'none',
     },
 }
