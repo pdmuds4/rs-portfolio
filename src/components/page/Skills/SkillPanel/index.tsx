@@ -15,7 +15,9 @@ const SkillPanel: React.FC<
                 {props.title}
             </Typography>
             <Box sx={styles.contain}>
+                <Box width={{xs: 5, md: 10}} />
                 {props.children}
+                <Box width={{xs: 5, md: 10}} />
             </Box>
         </TabPanel>
     )

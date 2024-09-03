@@ -45,6 +45,7 @@ const Works: React.FC = () => {
                 <Grid2 container spacing={3}>
                     <Grid2 size={{xs: 12, md: 5}} sx={styles.carousel_wrapper}>
                         <Box sx={styles.cards_carousel}>
+                            <Box height={{xs: 5, md: 10}} />
                         {data.map((item, index) => (
                             <DevelopCard 
                                 key={index}
@@ -54,9 +55,10 @@ const Works: React.FC = () => {
                                 changePanel={() => setPanelApp(item)}
                             />
                         ))}
+                            <Box height={{xs: 5, md: 10}} />
                         </Box>
                     </Grid2>
-                    <Grid2 size={{xs: 12, md: 7}}>
+                    <Grid2 size={{xs: 12, md: 7}} p={{xs: "10px 0", md: "20px 0"}}>
                         <DevelopPanel
                             title={panelApp.title}
                             github={panelApp.github}

@@ -3,7 +3,7 @@ import { SxProps } from "@mui/material";
 export const body: SxProps = {
     bgcolor: "#3c4858",
     position: 'relative',
-    padding: { xs: "10px", md: "20px" },
+    padding: { xs: "10px 0", md: "20px 0" },
     '&::after': {
         content: '""',
         position: 'absolute',
