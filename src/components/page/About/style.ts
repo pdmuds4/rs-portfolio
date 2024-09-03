@@ -1,6 +1,5 @@
 import { SxProps } from "@mui/material";
 import { CSSProperties } from "react";
-import { Zen_Old_Mincho } from "next/font/google";
 
 
 export const avator_wrapper: SxProps = {
@@ -22,11 +21,6 @@ export const avator_button: SxProps = {
         bgcolor: "rgba(255, 255, 255, 0.2)",
     }
 }
-
-export const myname_font = Zen_Old_Mincho({
-    subsets: ["latin"],
-    weight: "700",
-});
 
 export const myname: SxProps = {
     letterSpacing: "0.25rem",

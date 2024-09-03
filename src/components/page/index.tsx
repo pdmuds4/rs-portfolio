@@ -4,6 +4,6 @@ export {default as MainContent} from "./MainContent";
 
 export {default as About} from "./About";
 export {default as HobbyLikes} from "./HobbyLikes";
-export {default as Career} from "./Career";
 export {default as Skills} from "./Skills";
 export {default as Works} from "./Works";
+export {default as Qiita} from "./Qiita";

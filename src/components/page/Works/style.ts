@@ -2,7 +2,7 @@ import { SxProps } from "@mui/material";
 
 export const card_body: SxProps = {
     margin: "16px 0",
-    padding: { xs: "5px", md: "20px" },
+    padding: { xs: "10px", md: "20px" },
     bgcolor: "#3c4858"
 }
 

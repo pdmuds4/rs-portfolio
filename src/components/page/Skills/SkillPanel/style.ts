@@ -3,7 +3,7 @@ import { SxProps } from "@mui/material";
 export const body: SxProps = {
     bgcolor: "#3c4858",
     position: 'relative',
-    padding: { xs: "5px", md: "20px" },
+    padding: { xs: "10px", md: "20px" },
     '&::after': {
         content: '""',
         position: 'absolute',
@@ -34,5 +34,5 @@ export const title: SxProps = {
     display: { xs: 'block', sm: 'none' },
     fontFamily: 'Times New Roman',
     fontSize: 20,
-    color: "#3C4858"
+    color: "white"
 }

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Box, Typography, IconButton } from "@mui/material"
-import { Text, Section } from "@components/ui"
+import { Text, Section, NextFonts } from "@components/ui"
 import * as styles from "./style"
 
 const About: React.FC = () => {
@@ -18,13 +18,13 @@ const About: React.FC = () => {
                 </IconButton>
                 <Typography 
                     variant="subtitle2"
-                    className={styles.myname_font.className}
+                    className={NextFonts.zenOldMincho.className}
                 >
                     さいき　りょうすけ
                 </Typography>
                 <Typography 
                     variant="h4" 
-                    className={styles.myname_font.className}
+                    className={NextFonts.zenOldMincho.className}
                     sx={styles.myname}
                 >
                     佐伯綾亮
