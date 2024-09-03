@@ -1,4 +1,5 @@
 import { Card, Box, CircularProgress, Avatar, Typography, Chip } from "@mui/material"
+import { NextFonts } from "@components/ui";
 import * as styles from "./style";
 
 const SkillCard: React.FC<{
@@ -23,14 +24,14 @@ const SkillCard: React.FC<{
                 />
             </Box>
             <Typography
-                className={styles.title_font.className}
+                className={NextFonts.sourceCodePro.className}
                 sx={styles.title}
                 align="center"
                 variant="h6"
                 noWrap
             >{props.title}</Typography>
             <Chip 
-                className={styles.title_font.className}
+                className={NextFonts.sourceCodePro.className}
                 label={`${props.progress}/10`} 
                 color={props.color}
             />

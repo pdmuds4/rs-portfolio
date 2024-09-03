@@ -1,4 +1,5 @@
 import { Card, Container, Box, Typography, Grid2 } from "@mui/material";
+import { NextFonts } from "@components/ui";
 import * as styles from "./style";
 
 const Analyze: React.FC = () => {
@@ -30,7 +31,7 @@ const Analyze: React.FC = () => {
             <Container sx={styles.container}>
                 <Typography 
                     variant="body1"
-                    className={styles.cmd_font.className}
+                    className={NextFonts.sourceCodePro.className}
                 >
                     $ analyze @pam5596
                 </Typography>
@@ -40,7 +41,7 @@ const Analyze: React.FC = () => {
                         <Grid2 size={11}>
                             <Typography 
                                 variant="subtitle1"
-                                className={styles.cmd_font.className}
+                                className={NextFonts.sourceCodePro.className}
                             >
                                 {item.title}
                             </Typography>
@@ -48,7 +49,7 @@ const Analyze: React.FC = () => {
                         <Grid2 size={1}>
                         <Typography 
                                 variant="subtitle1"
-                                className={styles.cmd_font.className}
+                                className={NextFonts.sourceCodePro.className}
                                 sx={styles.result_percentage}
                             >
                                 {item.percentage}

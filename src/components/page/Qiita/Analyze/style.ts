@@ -1,5 +1,4 @@
 import { SxProps } from '@mui/system';
-import { Source_Code_Pro } from "next/font/google";
 
 export const body: SxProps = {
     color: "white",
@@ -13,10 +12,6 @@ export const container: SxProps = {
     flexDirection: "column",
 }
 
-export const cmd_font = Source_Code_Pro({
-    subsets: ["latin"],
-    weight: "600",
-});
 
 export const result_title: SxProps = {
     color: "#ffdb57",

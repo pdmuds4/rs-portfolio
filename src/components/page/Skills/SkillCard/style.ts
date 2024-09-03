@@ -1,5 +1,4 @@
 import { SxProps } from "@mui/material";
-import { Source_Code_Pro } from "next/font/google";
 
 export const body: SxProps = {
     width: "150px",
@@ -28,10 +27,6 @@ export const progress: SxProps = {
     opacity: 0.7,
 }
 
-export const title_font = Source_Code_Pro({
-    subsets: ["latin"],
-    weight: "600",
-});
 
 export const title: SxProps = {
     color: "#3C4858",
