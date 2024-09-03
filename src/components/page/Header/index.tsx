@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                 <Toolbar disableGutters>
                     <Avatar alt="Rscript" src="icon.svg" sx={styles.symbol}/>
                     <Typography
-                        variant="subtitle1"
+                        variant="h6"
                         noWrap
                         sx={styles.title}
                     >

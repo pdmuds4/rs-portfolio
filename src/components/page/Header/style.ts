@@ -14,7 +14,7 @@ export const symbol: SxProps = {
 export const title: SxProps = {
     display: { xs: 'none', sm: 'flex' },
     fontFamily: 'monospace',
-    letterSpacing: '.15rem',
+    letterSpacing: '.1rem',
     color: 'inherit',
     textDecoration: 'none',
     flexGrow: 1,
