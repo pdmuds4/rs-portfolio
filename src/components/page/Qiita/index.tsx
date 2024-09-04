@@ -57,7 +57,7 @@ const Qiita: React.FC = () => {
                     </Grid2>
                 </CardContent>
             </Card>
-    </Section>
+        </Section>
     );
 }
 
