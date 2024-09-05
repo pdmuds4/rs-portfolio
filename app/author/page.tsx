@@ -1,7 +1,11 @@
-export default function AuthorPage () {
+import { EditorContents, EditorHobbyLikes } from "@components/page";
+import { HiddenDivider } from "@components/ui";
+
+export default function Author () {
     return (
-        <>
-            <h1>Author Page</h1>
-        </>
+        <EditorContents>
+            <EditorHobbyLikes />
+            <HiddenDivider />
+        </EditorContents>
     );
 }

@@ -8,3 +8,6 @@ export {default as Skills} from "./Skills";
 export {default as Works} from "./Works";
 export {default as Qiita} from "./Qiita";
 export {default as Compose} from "./Compose";
+
+export {default as EditorContents} from "./EditorContents";
+export {default as EditorHobbyLikes} from "./EditorHobbyLikes";
