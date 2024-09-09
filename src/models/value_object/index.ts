@@ -1,2 +1,2 @@
 export { default as ID } from "./id";
-export { default as ImgSrc } from "./imgsrc";
+export { default as URL } from "./url";

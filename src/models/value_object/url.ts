@@ -1,7 +1,8 @@
 import BaseValueObject from "@utils/abstruct/value_object";
 import ValueObjectError from "./error";
+import { url } from "node:inspector";
 
-class ImgSrcError extends ValueObjectError<string> {
+class URLError extends ValueObjectError<string> {
     constructor(
         public error_val: string,
         public message: string,
@@ -9,18 +10,17 @@ class ImgSrcError extends ValueObjectError<string> {
         super(
             error_val,
             "Any",
-            "ImgSrc",
+            "URL",
             message,
         );
     }
 }
 
-export default class ImgSrc extends BaseValueObject<string> {
+export default class URL extends BaseValueObject<string> {
     validate(const_val: string): string {
-        if (const_val.length === 0)       throw new ImgSrcError(const_val, "空文字です");
-        
+        if (const_val.length === 0)       throw new URLError(const_val, "空文字です");
         const url_pattern = /^https:\/\/[ -~]+$/;
-        if (!url_pattern.test(const_val)) throw new ImgSrcError(const_val, "URL形式ではありません");
+        if (!url_pattern.test(const_val)) throw new URLError(const_val, "URL形式ではありません");
         return const_val;
     }
 
