@@ -1,6 +1,5 @@
 import BaseValueObject from "@utils/abstruct/value_object";
 import ValueObjectError from "./error";
-import { url } from "node:inspector";
 
 class URLError extends ValueObjectError<string> {
     constructor(
