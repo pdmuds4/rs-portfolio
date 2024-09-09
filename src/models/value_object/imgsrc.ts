@@ -1,26 +1,26 @@
 import BaseValueObject from "@utils/abstruct/value_object";
-import ValueObjectError from "../error";
+import ValueObjectError from "./error";
 
-class PanelError extends ValueObjectError<string> {
+class ImgSrcError extends ValueObjectError<string> {
     constructor(
-        public error_value: string,
-        public message: string
+        public error_val: string,
+        public message: string,
     ) {
         super(
-            "HobbyLikes",
-            "Panel",
+            error_val,
+            "Any",
+            "ImgSrc",
             message,
-            error_value
         );
     }
 }
 
-export default class Panel extends BaseValueObject<string> {
+export default class ImgSrc extends BaseValueObject<string> {
     validate(const_val: string): string {
-        if (const_val.length === 0)       throw new PanelError(const_val, "空文字です");
+        if (const_val.length === 0)       throw new ImgSrcError(const_val, "空文字です");
         
         const url_pattern = /^https:\/\/[ -~]+$/;
-        if (!url_pattern.test(const_val)) throw new PanelError(const_val, "URL形式ではありません");
+        if (!url_pattern.test(const_val)) throw new ImgSrcError(const_val, "URL形式ではありません");
         return const_val;
     }
 

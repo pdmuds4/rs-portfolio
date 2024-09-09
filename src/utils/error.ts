@@ -10,6 +10,6 @@ export default class CustomError extends Error {
         public error_value: any,
     ) {
         super(message);
-        Logger.error(`${message} -> 「${error_value}」: ${layer_level}/${model_name}/${class_name}`);
+        Logger.error(`[${layer_level}/${model_name}/${class_name}] ${message}: 「${error_value}」`);
     }
 }
