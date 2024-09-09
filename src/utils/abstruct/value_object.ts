@@ -1,5 +1,5 @@
 export default abstract class BaseValueObject<T> {
-    protected readonly _value: T;
+    private readonly _value: T;
 
     constructor(value: T) {
         this._value = this.validate(value);
