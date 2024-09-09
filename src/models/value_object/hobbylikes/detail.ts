@@ -7,10 +7,10 @@ class DetailError extends ValueObjectError<string> {
         public message: string
     ) {
         super(
+            error_value,
             "HobbyLikes",
             "Detail",
             message,
-            error_value
         );
     }
 }

@@ -7,10 +7,10 @@ class TitleError extends ValueObjectError<string> {
         public message: string
     ) {
         super(
+            error_value,
             "HobbyLikes",
             "Title",
             message,
-            error_value
         );
     }
 }
