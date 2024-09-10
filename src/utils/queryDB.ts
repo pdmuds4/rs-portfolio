@@ -21,22 +21,10 @@ export default async function queryDB<QueryDTO, ResDTO>(
         }
     }
 
-    const result = await query_function(query);
-
     try {
+        const result = await query_function(query);
+        return result;
+    } finally {
         await client.close();
-    } catch (error) {
-        if (error instanceof Error) {
-            throw new BaseError(
-                503,
-                "infrastructure",
-                "Any",
-                "MongoDBClient",
-                "MongoDB Atrasとの接続終了に失敗しました",
-                error.message
-            );
-        }
     }
-
-    return result;
 }

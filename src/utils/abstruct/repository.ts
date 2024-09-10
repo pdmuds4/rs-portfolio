@@ -4,8 +4,8 @@ import { Collection } from "mongodb";
 export default interface BaseRepository<Entity> {
     Client: MongoDBClient;
     ORM: Collection;
-    selectAll? (             ): Promise<Entity[]|void>;
-    selectById?(query: Entity): Promise<Entity  |void>;
+    selectAll? (             ): Promise<Entity[]|null|void>;
+    selectById?(query: Entity): Promise<Entity  |null|void>;
     insert?    (query: Entity): Promise<Entity  |void>;
     update?    (query: Entity): Promise<Entity  |void>;
     deleteById?(query: Entity): Promise<void>;
