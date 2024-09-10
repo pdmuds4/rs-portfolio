@@ -1,5 +1,4 @@
 import BaseValueObject from "@utils/abstruct/value_object";
-import ValueObjectError from "@utils/exceptions/value_object";
 
 type CategoryEnum = {
     E_FRONT: "frontend",

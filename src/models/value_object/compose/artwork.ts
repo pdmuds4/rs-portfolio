@@ -1,4 +1,4 @@
-import BaseURL from "../baseurl";
+import BaseURL from "../baseUrl";
 
 export default class Artwork extends BaseURL {
     constructor(value: string) {

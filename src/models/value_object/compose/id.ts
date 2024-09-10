@@ -1,4 +1,4 @@
-import BaseID from "../baseid";
+import BaseID from "../baseId";
 
 export default class ComposeID extends BaseID {
     constructor(value: number) {
