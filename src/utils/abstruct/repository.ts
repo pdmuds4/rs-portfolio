@@ -1,10 +1,12 @@
 import MongoDBClient from "@clients/mongodb";
+import { Collection } from "mongodb";
 
 export default interface BaseRepository<Entity> {
-    ORM: MongoDBClient;
-    selectAll?           (               ): Promise<Entity[]>;
-    selectById?<QueryDTO>(query: QueryDTO): Promise<Entity>;
-    insert?    <QueryDTO>(query: QueryDTO): Promise<Entity>;
-    update?    <QueryDTO>(query: QueryDTO): Promise<Entity>;
-    deleteById?<QueryDTO>(query: QueryDTO): void;
+    Client: MongoDBClient;
+    ORM: Collection;
+    selectAll? (             ): Promise<Entity[]|void>;
+    selectById?(query: Entity): Promise<Entity  |void>;
+    insert?    (query: Entity): Promise<Entity  |void>;
+    update?    (query: Entity): Promise<Entity  |void>;
+    deleteById?(query: Entity): Promise<void>;
 }

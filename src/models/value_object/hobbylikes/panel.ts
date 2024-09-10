@@ -1,4 +1,4 @@
-import BaseURL from "../baseurl";
+import BaseURL from "../baseUrl";
 
 export default class Panel extends BaseURL {
     constructor(value: string) {
