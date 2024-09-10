@@ -1,5 +1,5 @@
 import BaseValueObject from "@utils/abstruct/value_object";
-import ValueObjectError from "../error";
+import ValueObjectError from "@utils/exceptions/value_object";
 
 class GenreError extends ValueObjectError<string> {
     constructor(

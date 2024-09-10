@@ -1,6 +1,6 @@
-import { Logger } from "./logger";
+import { Logger } from "@utils/logger";
 
-export default class CustomError extends Error {
+export default class BaseError extends Error {
     constructor(
         public status_code: number,
         public layer_level: 'ValueObject' | 'Entity' | 'Repository' | 'Service' | 'UseCase',

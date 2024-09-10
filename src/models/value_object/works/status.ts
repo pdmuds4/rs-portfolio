@@ -1,5 +1,5 @@
 import BaseValueObject from "@utils/abstruct/value_object";
-import ValueObjectError from "../error";
+import ValueObjectError from "@utils/exceptions/value_object";
 
 // 0: 未公開, 1: 公開中, 2: 再開発中, 3: 停止中
 export type StatusEnum = {

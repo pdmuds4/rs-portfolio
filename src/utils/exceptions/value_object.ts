@@ -1,6 +1,6 @@
-import CustomError from "@utils/error";
+import BaseError from "@utils/abstruct/error";
 
-export default class ValueObjectError<ValueT> extends CustomError {
+export default class ValueObjectError<ValueT> extends BaseError {
     constructor(
         public error_value: ValueT,
         public model_name: string,
