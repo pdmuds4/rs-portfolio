@@ -3,7 +3,7 @@ import { Logger } from "@utils/logger";
 export default class BaseError extends Error {
     constructor(
         public status_code: number,
-        public layer_level: 'ValueObject' | 'Entity' | 'Repository' | 'Service' | 'UseCase',
+        public layer_level: 'ValueObject' | 'Entity' | 'Repository' | 'Service' | 'UseCase' | 'infrastructure',
         public model_name: string,
         public class_name: string,
         public message: string,
