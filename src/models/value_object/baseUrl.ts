@@ -2,8 +2,8 @@ import ValueObjectError from "@utils/exceptions/value_object";
 
 export default class BaseURL {
     private readonly _value: string;
-    private model_name: string;
-    private class_name: string;
+    readonly model_name: string;
+    readonly class_name: string;
 
     constructor(value: string, model_name: string, class_name: string) {
         this.model_name = model_name;
