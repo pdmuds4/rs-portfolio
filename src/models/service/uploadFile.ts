@@ -1,9 +1,9 @@
 import SupabaseStorageClient from "@clients/supabase";
 import BaseService from "@utils/abstruct/service";
 import ServiceError from "@utils/exceptions/service";
-import { SupabasePath } from "@models/value_object";
+import { SbFilePath } from "@models/value_object";
 
-export default class UploadFileService implements BaseService<SupabasePath> {
+export default class UploadFileService implements BaseService<SbFilePath> {
     client: SupabaseStorageClient;
     upload_file: File;
     model_name: "Works" | "Compose";
@@ -21,7 +21,7 @@ export default class UploadFileService implements BaseService<SupabasePath> {
         this.class_name = class_name;
     }
 
-    async execute(): Promise<SupabasePath|void> {
+    async execute(): Promise<SbFilePath|void> {
         try {
             const { data, error } = await this.client.bucket(this.model_name)
                 .upload(
@@ -39,10 +39,7 @@ export default class UploadFileService implements BaseService<SupabasePath> {
                     "ファイルのアップロードに失敗しました"
                 );
             } else {
-                return new SupabasePath(data.path);
-                // const { data, } = await this.client.bucket("works_thumbnail")
-                //     .createSignedUrl(data.path, 60);
-                // return data?.signedUrl;
+                return new SbFilePath(data.path, this.model_name);
             }
         } catch (e) {
             if (e instanceof ServiceError) {

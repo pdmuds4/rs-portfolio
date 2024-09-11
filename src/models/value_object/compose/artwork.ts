@@ -1,7 +1,7 @@
-import BaseURL from "../baseUrl";
+import SbFilePath from "../sbFilePath";
 
-export default class Artwork extends BaseURL {
+export default class Artwork extends SbFilePath {
     constructor(value: string) {
-        super(value, "Compose", "Artwork");
+        super(value, "Compose");
     }
 }

@@ -1,16 +1,16 @@
 import SupabaseStorageClient from "@clients/supabase";
 import BaseService from "@utils/abstruct/service";
 import ServiceError from "@utils/exceptions/service";
-import { SupabasePath } from "@models/value_object";
+import { SbFilePath } from "@models/value_object";
 
 export default class DeleteFileService implements BaseService<void> {
     client: SupabaseStorageClient;
-    file_path: SupabasePath;
+    file_path: SbFilePath;
     model_name: "Works" | "Compose";
 
     constructor(
         client: SupabaseStorageClient, 
-        file_path: SupabasePath,
+        file_path: SbFilePath,
         model_name: "Works" | "Compose"
     ) {
         this.client = client;
@@ -41,7 +41,7 @@ export default class DeleteFileService implements BaseService<void> {
                     500,
                     this.file_path,
                     this.model_name,
-                    "deleteFileService",
+                    "DeleteFileService",
                     "ファイルのアップロードに失敗しました"
                 );
             }
