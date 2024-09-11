@@ -17,7 +17,6 @@ export default class AudioUrlCheckService implements BaseService<BaseURL> {
             if(response_header.ok && is_audio) {
                 return this.url;
             } else {
-                console.log(response_header);
                 throw new ServiceError(
                     400,
                     response_header,
