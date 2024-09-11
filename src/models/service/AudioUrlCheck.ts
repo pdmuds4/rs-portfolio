@@ -1,8 +1,8 @@
 import { BaseURL } from "@models/value_object";
+import BaseService from "@utils/abstruct/service";
 import ServiceError from "@utils/exceptions/service";
 
-
-export default class AudioUrlCheckService {
+export default class AudioUrlCheckService implements BaseService<BaseURL> {
     url: BaseURL;
 
     constructor(url: BaseURL) {

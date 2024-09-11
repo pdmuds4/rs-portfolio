@@ -1,8 +1,8 @@
 import { BaseURL } from "@models/value_object";
+import BaseService from "@utils/abstruct/service";
 import ServiceError from "@utils/exceptions/service";
 
-
-export default class ImageUrlCheckService {
+export default class ImageUrlCheckService implements BaseService<BaseURL> {
     url: BaseURL;
 
     constructor(url: BaseURL) {
