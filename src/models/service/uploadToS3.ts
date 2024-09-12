@@ -27,7 +27,7 @@ export default class UploadToS3Service implements BaseService<Thumbnail|Artwork|
         this.file_name = file_name;
     }
 
-    async execute(): Promise<any|void> {
+    async execute(): Promise<Thumbnail|Artwork|Audio|void> {
         try {
             const path_key = `${this.model_name}/${this.class_name ? `${this.class_name}/` : ''}${this.file_name}`;
             const command = new PutObjectCommand({
