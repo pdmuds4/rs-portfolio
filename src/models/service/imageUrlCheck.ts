@@ -1,15 +1,19 @@
-import { BaseURL } from "@models/value_object";
 import BaseService from "@utils/abstruct/service";
 import ServiceError from "@utils/exceptions/service";
 
-export default class ImageUrlCheckService implements BaseService<BaseURL> {
-    url: BaseURL;
+import { Panel } from "@models/value_object/hobbylikes";
+import { Symbol } from "@models/value_object/skills";
+import { Thumbnail } from "@models/value_object/works";
+import { Artwork } from "@models/value_object/compose";
 
-    constructor(url: BaseURL) {
+export default class ImageUrlCheckService implements BaseService<Panel|Symbol|Thumbnail|Artwork> {
+    url: Panel | Symbol | Thumbnail | Artwork;
+
+    constructor(url: Panel | Symbol | Thumbnail | Artwork) {
         this.url = url;
     }
 
-    async execute(): Promise<BaseURL|void> {
+    async execute(): Promise<Panel|Symbol|Thumbnail|Artwork|void> {
         try {
             const response_header = await fetch(this.url.value, {method: 'HEAD'});
             const is_image = response_header.headers.get('Content-Type')?.includes('image')
@@ -19,7 +23,7 @@ export default class ImageUrlCheckService implements BaseService<BaseURL> {
             } else {
                 throw new ServiceError(
                     400,
-                    this.url,
+                    this.url.value,
                     this.url.model_name,
                     this.url.class_name,
                     "画像URLではありません"
@@ -31,7 +35,7 @@ export default class ImageUrlCheckService implements BaseService<BaseURL> {
             } else {
                 throw new ServiceError(
                     500,
-                    this.url,
+                    this.url.value,
                     this.url.model_name,
                     this.url.class_name,
                     "URLの取得に失敗しました"

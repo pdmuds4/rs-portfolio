@@ -1,15 +1,15 @@
-import { BaseURL } from "@models/value_object";
 import BaseService from "@utils/abstruct/service";
 import ServiceError from "@utils/exceptions/service";
+import { Audio } from "@models/value_object/compose";
 
-export default class AudioUrlCheckService implements BaseService<BaseURL> {
-    url: BaseURL;
+export default class AudioUrlCheckService implements BaseService<Audio> {
+    url: Audio;
 
-    constructor(url: BaseURL) {
+    constructor(url: Audio) {
         this.url = url;
     }
 
-    async execute(): Promise<BaseURL|void> {
+    async execute(): Promise<Audio|void> {
         try {
             const response_header = await fetch(this.url.value, {method: 'HEAD'});
             const is_audio = response_header.headers.get('Content-Type')?.includes('audio')
