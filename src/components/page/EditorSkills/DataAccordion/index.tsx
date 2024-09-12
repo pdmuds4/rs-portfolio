@@ -8,6 +8,8 @@ const DataAccordion: React.FC<{
     onDelete: () => void,
     onAdd: () => void
 }> = (props) => {
+    const [entity, setEntity] = useState(props.entity);
+
     return (
         <JsonAccordion
             title="null"
@@ -21,26 +23,17 @@ const DataAccordion: React.FC<{
                         variant="filled"
                         size="small"
                         label="title"
-                        value={null}
+                        value={entity?.title}
                     />
                 </JsonProp>
-                <JsonProp key={2} label="panel">
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                        label="panel"
-                        value={null}
-                    />
+                <JsonProp key={2} label="symbol">
+                    symbol
                 </JsonProp>
-                <JsonProp key={3} label="detail">
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                        label="detail"
-                        value={null}
-                    />
+                <JsonProp key={3} label="progress">
+                    progress
+                </JsonProp>
+                <JsonProp key={3} label="category">
+                    category
                 </JsonProp>
             </Grid2>
         </JsonAccordion>

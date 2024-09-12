@@ -2,11 +2,11 @@
 import { EditorSection } from "@components/ui";
 import DataAccordion from "./DataAccordion";
 
-const EditorHobbyLikes: React.FC = () => {
+const EditorWorks: React.FC = () => {
     return (
         <EditorSection
-            id="hobbylikes"
-            hedding="Hobby & Likes"
+            id="works"
+            hedding="Works"
         >
             <DataAccordion
                 entity={null}
@@ -17,4 +17,4 @@ const EditorHobbyLikes: React.FC = () => {
     )
 }
 
-export default EditorHobbyLikes;
+export default EditorWorks;
