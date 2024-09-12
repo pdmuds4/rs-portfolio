@@ -7,10 +7,16 @@ const JsonAccordion: React.FC<PropsWithChildren<{
     title: string;
     onDelete: () => void;
     onAdd: () => void;
+    onClosed: () => void;
 }>> = (props) => {
     return (
         <>
-            <Accordion>
+            <Accordion onChange={
+                (e)=>{
+                    const is_closed = e.currentTarget.getAttribute("aria-expanded") === "true";
+                    if (is_closed) props.onClosed();
+                }
+            }>
                 <AccordionSummary
                     sx={styles.summary}
                     expandIcon={<ExpandMore />}

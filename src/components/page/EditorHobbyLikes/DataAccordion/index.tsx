@@ -15,6 +15,7 @@ const DataAccordion: React.FC<{
             title="null"
             onDelete={props.onDelete}
             onAdd={props.onAdd}
+            onClosed={() => console.log("closed")}
         >   
             <Grid2 container spacing={2}>
                 <JsonProp key={1} label="title">

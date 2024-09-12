@@ -15,6 +15,7 @@ const DataAccordion: React.FC<{
             title="null"
             onDelete={props.onDelete}
             onAdd={props.onAdd}
+            onClosed={() => console.log("closed")}
         >   
             <Grid2 container spacing={2}>
                 <JsonProp key={1} label="title">
@@ -32,7 +33,7 @@ const DataAccordion: React.FC<{
                 <JsonProp key={3} label="progress">
                     progress
                 </JsonProp>
-                <JsonProp key={3} label="category">
+                <JsonProp key={4} label="category">
                     category
                 </JsonProp>
             </Grid2>
