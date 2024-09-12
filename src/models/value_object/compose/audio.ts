@@ -1,7 +1,7 @@
-import SbFilePath from "../sbFilePath";
+import BaseURL from "../baseUrl";
 
-export default class Audio extends SbFilePath {
+export default class Audio extends BaseURL {
     constructor(value: string) {
-        super(value, "Compose");
+        super(value, "Compose", "Audio");
     }
 }
