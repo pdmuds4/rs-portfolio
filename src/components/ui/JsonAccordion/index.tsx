@@ -41,7 +41,7 @@ const JsonAccordion: React.FC<PropsWithChildren<{
                 <IconButton 
                     color="success" 
                     sx={styles.button}
-                    onCanPlay={props.onAdd}
+                    onClick={props.onAdd}
                 >
                     <Add />
                 </IconButton>

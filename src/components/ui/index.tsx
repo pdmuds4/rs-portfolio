@@ -7,3 +7,4 @@ export { default as HiddenDivider } from "./HiddenDivider";
 
 export { default as EditorSection } from "./EditorSection";
 export { default as JsonAccordion } from "./JsonAccordion";
+export { default as JsonProp } from "./JsonProp";
