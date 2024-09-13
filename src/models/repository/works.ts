@@ -46,10 +46,10 @@ export default class WorksRepository implements BaseRepository<WorksEntity> {
                             new Description(work.description),
                             work.techs.map((tech: number) => new SkillsID(tech)),
                             new Repository (work.repository),
-                            new Link       (work.link),
+                            work.link ? new Link(work.link) : null,
                             work.isprivate,
                             new Status     (work.status),
-                            new Created    (work.created_at),
+                            new Created    (new Date(work.created_at)),
                         )
                     )
                 } catch (error) {

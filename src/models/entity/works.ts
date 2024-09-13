@@ -9,7 +9,7 @@ export type WorksDTO = {
     description: Description['_value'];
     techs:       SkillsID   ['_value'][];
     repository:  Repository ['_value'];
-    link:        Link       ['_value'];
+    link:        Link       ['_value'] | null;
     isprivate:   boolean;
     status:      Status     ['_value'];
     created:     Created    ['_value'];
@@ -23,7 +23,7 @@ export interface WorksProps {
     description: Description;
     techs:       SkillsID[];
     repository:  Repository;
-    link:        Link;
+    link:        Link | null;
     isprivate:   boolean;
     status:      Status;
     created:     Created;
@@ -36,7 +36,7 @@ export default class WorksEntity implements BaseEntity<WorksProps, WorksDTO>{
     public description: Description;
     public       techs: SkillsID[];
     public  repository: Repository;
-    public        link: Link;
+    public        link: Link | null;
     public   isprivate: boolean;
     public      status: Status;
     public     created: Created;
@@ -48,7 +48,7 @@ export default class WorksEntity implements BaseEntity<WorksProps, WorksDTO>{
         description: Description,
         techs:      SkillsID[],
         repository: Repository,
-        link:       Link,
+        link:       Link | null,
         isprivate:  boolean,
         status:     Status,
         created:    Created
@@ -73,7 +73,7 @@ export default class WorksEntity implements BaseEntity<WorksProps, WorksDTO>{
             description: this.description.value,
             techs:       this.techs.map((tech) => tech.value),
             repository:  this.repository.value,
-            link:        this.link.value,
+            link:        this.link ? this.link.value : null,
             isprivate:   this.isprivate,
             status:      this.status.value,
             created:     this.created.value
@@ -88,7 +88,7 @@ export default class WorksEntity implements BaseEntity<WorksProps, WorksDTO>{
             description: this.description,
             techs:       this.techs,
             repository:  this.repository,
-            link:        this.link,
+            link:        this.link ? this.link : null,
             isprivate:   this.isprivate,
             status:      this.status,
             created:     this.created

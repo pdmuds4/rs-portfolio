@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const callAPI = async <ReqT, ResT>(
+const callAPI = async <ReqT, ResT>(
     method: string, 
     endpoint: string, 
     req_body?: ReqT
@@ -23,3 +23,5 @@ export const callAPI = async <ReqT, ResT>(
         else throw new Error('不明なエラーが発生しました');
     }
 };
+
+export default callAPI;

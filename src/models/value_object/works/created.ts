@@ -17,8 +17,7 @@ class CreatedError extends ValueObjectError<Date> {
 
 export default class Created extends BaseValueObject<Date> {
     validate(const_val: Date): Date {
-        if (isNaN(const_val.getTime())) throw new CreatedError(const_val, "無効な日付です");
-        if (const_val > new Date())     throw new CreatedError(const_val, "未来の日付は無効です");
+        if (const_val > new Date()) throw new CreatedError(const_val, "未来の日付は無効です");
 
         return const_val;
     }

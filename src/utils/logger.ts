@@ -9,7 +9,7 @@ export type LogJson = {
 };
 
 
-export const Logger = pino({
+const Logger = pino({
     level: process.env.LOG_LEVEL || 'info',
     transport: {
         targets: [
@@ -41,3 +41,5 @@ export const Logger = pino({
         ]
     }
 });
+
+export default Logger;

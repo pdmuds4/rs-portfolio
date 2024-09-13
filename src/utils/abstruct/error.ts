@@ -1,4 +1,4 @@
-import { Logger } from "@utils/logger";
+import Logger from "@utils/logger";
 
 export default class BaseError extends Error {
     constructor(
