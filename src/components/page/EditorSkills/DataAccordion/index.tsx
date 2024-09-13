@@ -18,24 +18,10 @@ const DataAccordion: React.FC<{
             onClosed={() => console.log("closed")}
         >   
             <Grid2 container spacing={2}>
-                <JsonProp key={1} label="title">
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                        label="title"
-                        value={entity?.title}
-                    />
-                </JsonProp>
-                <JsonProp key={2} label="symbol">
-                    symbol
-                </JsonProp>
-                <JsonProp key={3} label="progress">
-                    progress
-                </JsonProp>
-                <JsonProp key={4} label="category">
-                    category
-                </JsonProp>
+                <JsonProp key={1} label="title" type="text" value={"title"} />
+                <JsonProp key={2} label="symbol" type="text" value={"symbol"} />
+                <JsonProp key={3} label="progress" type="number" value={0} />
+                <JsonProp key={4} label="category" type="select" value={"frontend"} />
             </Grid2>
         </JsonAccordion>
     )

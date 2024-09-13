@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Grid2, TextField } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import { JsonAccordion, JsonProp } from "@components/ui"
 
 const DataAccordion: React.FC<{
@@ -18,33 +18,9 @@ const DataAccordion: React.FC<{
             onClosed={() => console.log("closed")}
         >   
             <Grid2 container spacing={2}>
-                <JsonProp key={1} label="title">
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                        label="title"
-                        value={entity?.title}
-                    />
-                </JsonProp>
-                <JsonProp key={2} label="panel">
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                        label="panel"
-                        value={entity?.panel}
-                    />
-                </JsonProp>
-                <JsonProp key={3} label="detail">
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                        label="detail"
-                        value={entity?.detail}
-                    />
-                </JsonProp>
+                <JsonProp key={1} type="text" label="title" value={"title"} />
+                <JsonProp key={2} type="text" label="thumnail" value={"thumnail"} />
+                <JsonProp key={3} type="text" label="description" value={"description"} />
             </Grid2>
         </JsonAccordion>
     )

@@ -18,33 +18,13 @@ const DataAccordion: React.FC<{
             onClosed={() => console.log("closed")}
         >   
             <Grid2 container spacing={2}>
-                <JsonProp key={1} label="title">
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        size="small"
-                        label="title"
-                        value={entity?.title}
-                    />
-                </JsonProp>
-                <JsonProp key={2} label="artwork">
-                    artwork
-                </JsonProp>
-                <JsonProp key={3} label="genre">
-                    genre
-                </JsonProp>
-                <JsonProp key={4} label="aduio">
-                    audio
-                </JsonProp>
-                <JsonProp key={5} label="youtube url">
-                    youtube Url
-                </JsonProp>
-                <JsonProp key={6} label="soundcloud url">
-                    soundcloud url
-                </JsonProp>
-                <JsonProp key={7} label="x url">
-                    x url
-                </JsonProp>
+                <JsonProp key={1} label="title" type="text" value={"title"} />
+                <JsonProp key={2} label="artwork" type="file" value={"artwork"} />
+                <JsonProp key={3} label="genre" type="text" value={"genre"} />
+                <JsonProp key={4} label="audio" type="file" value={"audio"} />
+                <JsonProp key={5} label="youtube url" type="text" value={"youtube url"} />
+                <JsonProp key={6} label="soundcloud url" type="text" value={"soundcloud url"} />
+                <JsonProp key={7} label="x url" type="text" value={"x url"} />
             </Grid2>
         </JsonAccordion>
     )
