@@ -8,9 +8,9 @@ import queryDB from "@utils/queryDB";
 import { SkillsEntity } from "@models/entity";
 import { SkillsID, Title, Symbol, Progress, Category } from "@models/value_object/skills";
 
-class SkillsRepositoryError extends RepositoryError<SkillsEntity|null> {
+class SkillsRepositoryError extends RepositoryError<SkillsEntity|SkillsID|null> {
     constructor(
-        error_value: SkillsEntity | null,
+        error_value: SkillsEntity | SkillsID | null,
         message: string
     ) {
         super(
@@ -59,11 +59,11 @@ export default class SkillsRepository implements BaseRepository<SkillsEntity> {
     }
 
 
-    async selectById(query: SkillsEntity): Promise<SkillsEntity|null|void> {
-        return await queryDB<SkillsEntity, SkillsEntity|null>(this.Client, query,
+    async selectById(query: SkillsID): Promise<SkillsEntity|null|void> {
+        return await queryDB<SkillsID, SkillsEntity|null>(this.Client, query,
             async () => {
                 try {
-                    const response = await this.ORM.findOne({ id: query.id.value });
+                    const response = await this.ORM.findOne({ id: query.value });
                     
                     if (response) {
                         return new SkillsEntity(
@@ -130,11 +130,11 @@ export default class SkillsRepository implements BaseRepository<SkillsEntity> {
     }
 
 
-    async deleteById(query: SkillsEntity): Promise<void> {
-        return await queryDB<SkillsEntity, void>(this.Client, query,
+    async deleteById(query: SkillsID): Promise<void> {
+        return await queryDB<SkillsID, void>(this.Client, query,
             async () => {
                 try {
-                    await this.ORM.deleteOne({ id: query.id.value });
+                    await this.ORM.deleteOne({ id: query.value });
                 } catch (error) {
                     if (error instanceof Error) {
                         throw new SkillsRepositoryError(

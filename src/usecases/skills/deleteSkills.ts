@@ -1,13 +1,14 @@
 import BaseUseCase from "@utils/abstruct/usecase";
 import { SkillsRepository } from "@models/repository";
 import { SkillsEntity } from "@models/entity";
+import { SkillsID } from "@models/value_object/skills";
 
 
-export default class DeleteSkillsUseCase implements BaseUseCase<SkillsEntity, SkillsEntity> {
+export default class DeleteSkillsUseCase implements BaseUseCase<SkillsID, void> {
     repository: SkillsRepository;
-    request: SkillsEntity;
+    request: SkillsID;
 
-    constructor(repository: SkillsRepository, request: SkillsEntity) {
+    constructor(repository: SkillsRepository, request: SkillsID) {
         this.repository = repository;
         this.request = request;
     }
