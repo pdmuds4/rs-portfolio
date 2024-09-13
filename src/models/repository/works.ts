@@ -9,9 +9,9 @@ import { WorksEntity } from "@models/entity";
 import { WorksID, Title, Thumbnail, Description, Repository, Link, Status, Created } from "@models/value_object/works";
 import { SkillsID } from "@models/value_object/skills";
 
-class WorksRepositoryError extends RepositoryError<WorksEntity|null> {
+class WorksRepositoryError extends RepositoryError<WorksEntity|WorksID|null> {
     constructor(
-        error_value: WorksEntity | null,
+        error_value: WorksEntity | WorksID | null,
         message: string
     ) {
         super(
@@ -106,11 +106,11 @@ export default class WorksRepository implements BaseRepository<WorksEntity> {
     }
 
 
-    async deleteById(query: WorksEntity): Promise<void> {
-        return await queryDB<WorksEntity, void>(this.Client, query,
+    async deleteById(query: WorksID): Promise<void> {
+        return await queryDB<WorksID, void>(this.Client, query,
             async () => {
                 try {
-                    await this.ORM.deleteOne({ id: query.id.value });
+                    await this.ORM.deleteOne({ id: query.value });
                 } catch (error) {
                     if (error instanceof Error) {
                         throw new WorksRepositoryError(

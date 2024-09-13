@@ -1,6 +1,5 @@
 import MongoDBClient from "@clients/mongodb";
 import BaseError from "@utils/abstruct/error";
-import { Logger } from "@utils/logger";
 
 import { SkillsDTO } from "@models/entity/skills";
 import { SkillsID, Title, Symbol, Progress, Category } from "@models/value_object/skills";
