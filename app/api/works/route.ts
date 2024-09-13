@@ -116,7 +116,7 @@ export async function DELETE(request: Request) {
             } else {
                 throw new BaseError(
                     400, 
-                    'infrastructure',
+                    'Infrastructure',
                     'Works',
                     'DELETE',
                     'idパスパラメータがないか、不正です',

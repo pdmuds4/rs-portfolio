@@ -21,7 +21,7 @@ export default class QiitaAPI {
         } else {
             throw new BaseError(
                 response.status,
-                "infrastructure",
+                "Infrastructure",
                 "Any",
                 "QiitaAPI",
                 "QiitaAPIとの通信に失敗しました",
