@@ -1,3 +1,4 @@
+"use client";
 import { PropsWithChildren } from 'react';
 import { Card } from '@mui/material';
 import * as styles from './style';

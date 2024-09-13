@@ -1,19 +1,22 @@
 import { EditorContents, EditorHobbyLikes, EditorSkills, EditorWorks, EditorCompose } from "@components/page";
 import { HiddenDivider } from "@components/ui";
+import AuthorContextProvider from "@components/provider/AuthorContextProvider";
 
 export default function Author () {
     return (
-        <EditorContents>
-            <EditorHobbyLikes />
-            <HiddenDivider />
+        <AuthorContextProvider>
+            <EditorContents>
+                <EditorHobbyLikes />
+                <HiddenDivider />
 
-            <EditorSkills />
-            <HiddenDivider />
+                <EditorSkills />
+                <HiddenDivider />
 
-            <EditorWorks />
-            <HiddenDivider />
+                <EditorWorks />
+                <HiddenDivider />
 
-            <EditorCompose />
-        </EditorContents>
+                <EditorCompose />
+            </EditorContents>
+        </AuthorContextProvider>
     );
 }

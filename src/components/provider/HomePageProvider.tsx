@@ -2,7 +2,7 @@
 import { PropsWithChildren } from "react"
 import { ParallaxProvider } from "react-scroll-parallax";
 
-export const PageProvider: React.FC<PropsWithChildren> = (props) => {
+export const HomePageProvider: React.FC<PropsWithChildren> = (props) => {
     return (
         <ParallaxProvider>
             {props.children}
@@ -10,4 +10,4 @@ export const PageProvider: React.FC<PropsWithChildren> = (props) => {
     );
 }
 
-export default PageProvider;
+export default HomePageProvider;
