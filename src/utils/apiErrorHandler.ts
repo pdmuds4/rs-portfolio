@@ -1,4 +1,5 @@
 import BaseError from "./abstruct/error";
+import Logger from "./logger";
 
 export default async function apiErrorHandler(
     request: Request,
@@ -23,6 +24,7 @@ export default async function apiErrorHandler(
                 }
             );
         } else if (error instanceof Error) {
+            Logger.error(`[Infrastructure/UnknownError] ${error.message}`);
             return Response.json(
                 {
                     message: error.message
