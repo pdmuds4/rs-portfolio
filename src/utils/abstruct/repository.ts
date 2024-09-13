@@ -8,5 +8,5 @@ export default interface BaseRepository<Entity> {
     selectById?(query: Entity): Promise<Entity  |null|void>;
     insert?    (query: Entity): Promise<Entity  |void>;
     update?    (query: Entity): Promise<Entity  |void>;
-    deleteById?(query: Entity): Promise<void>;
+    deleteById?(query: any): Promise<void>;
 }

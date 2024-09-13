@@ -10,7 +10,7 @@ export const callAPI = async <ReqT, ResT>(
             headers: {
                 'Allow-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',                  
-                // 'X-API-Key': 
+                'X-API-Key': process.env.API_KEY,
             },
             method: method,
             url: endpoint,
