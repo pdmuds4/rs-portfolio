@@ -1,13 +1,14 @@
 import BaseUseCase from "@utils/abstruct/usecase";
 import { ComposeRepository } from "@models/repository";
 import { ComposeEntity } from "@models/entity";
+import { ComposeID } from "@models/value_object/compose";
 
 
-export default class DeleteComposeUseCase implements BaseUseCase<ComposeEntity, ComposeEntity> {
+export default class DeleteComposeUseCase implements BaseUseCase<ComposeID, ComposeEntity> {
     repository: ComposeRepository;
-    request: ComposeEntity;
+    request: ComposeID;
 
-    constructor(repository: ComposeRepository, request: ComposeEntity) {
+    constructor(repository: ComposeRepository, request: ComposeID) {
         this.repository = repository;
         this.request = request;
     }

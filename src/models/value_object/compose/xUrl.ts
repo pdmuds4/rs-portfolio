@@ -19,7 +19,7 @@ export default class XUrl extends BaseValueObject<string> {
     validate(const_val: string): string {
         if (const_val.length === 0)       throw new XUrlError(const_val, "空文字です");
         
-        const url_pattern = /^(https:\/\/(www\.)?x\.com\/[\w-]+)$/;
+        const url_pattern = /^(https?:\/\/)?(www\.)?x\.com\/.+$/;
         if (!url_pattern.test(const_val)) throw new XUrlError(const_val, "XのURL形式ではありません");
         
         return const_val;

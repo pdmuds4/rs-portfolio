@@ -8,9 +8,9 @@ import queryDB from "@utils/queryDB";
 import { ComposeEntity } from "@models/entity";
 import { ComposeID, Title, Artwork, Genre, Audio, YoutubeUrl, SoundcloudUrl, XUrl } from "@models/value_object/compose";
 
-class ComposeRepositoryError extends RepositoryError<ComposeEntity|null> {
+class ComposeRepositoryError extends RepositoryError<ComposeEntity|ComposeID|null> {
     constructor(
-        error_value: ComposeEntity | null,
+        error_value: ComposeEntity | ComposeID | null,
         message: string
     ) {
         super(
@@ -37,16 +37,16 @@ export default class ComposeRepository implements BaseRepository<ComposeEntity> 
             async () => {
                 try {
                     const response = await this.ORM.find().toArray();
-                    return response.map((work) => 
+                    return response.map((compose) => 
                         new ComposeEntity(
-                            new ComposeID    (work.id),
-                            new Title        (work.title),
-                            new Artwork      (work.artwork),
-                            new Genre        (work.genre),
-                            new Audio        (work.audio),
-                            new YoutubeUrl   (work.youtube_url),
-                            new SoundcloudUrl(work.soundcloud_url),
-                            new XUrl         (work.x_url),
+                            new ComposeID    (compose.id),
+                            new Title        (compose.title),
+                            new Artwork      (compose.artwork),
+                            new Genre        (compose.genre),
+                            new Audio        (compose.audio),
+                            new YoutubeUrl   (compose.youtube),
+                            new SoundcloudUrl(compose.soundcloud),
+                            new XUrl         (compose.x),
                         )
                     )
                 } catch (error) {
@@ -103,11 +103,11 @@ export default class ComposeRepository implements BaseRepository<ComposeEntity> 
     }
 
 
-    async deleteById(query: ComposeEntity): Promise<void> {
-        return await queryDB<ComposeEntity, void>(this.Client, query,
+    async deleteById(query: ComposeID): Promise<void> {
+        return await queryDB<ComposeID, void>(this.Client, query,
             async () => {
                 try {
-                    await this.ORM.deleteOne({ id: query.id.value });
+                    await this.ORM.deleteOne({ id: query.value });
                 } catch (error) {
                     if (error instanceof Error) {
                         throw new ComposeRepositoryError(
