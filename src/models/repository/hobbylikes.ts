@@ -7,7 +7,6 @@ import queryDB from "@utils/queryDB";
 
 import { HobbyLikesEntity } from "@models/entity";
 import { HobbyLikesID, Title, Detail, Panel } from "@models/value_object/hobbylikes";
-import { HobbyLikesDTO } from "@models/entity/hobbylikes";
 
 class HobbyLikesRepositoryError extends RepositoryError<HobbyLikesEntity|HobbyLikesID|null> {
     constructor(
@@ -38,7 +37,7 @@ export default class HobbyLikesRepository implements BaseRepository<HobbyLikesEn
             async () => {
                 try {
                     const response = await this.ORM.find().toArray();
-                    return response.map((hobbylike: HobbyLikesDTO) => 
+                    return response.map((hobbylike) => 
                         new HobbyLikesEntity(
                             new HobbyLikesID(hobbylike.id),
                             new Title       (hobbylike.title),
