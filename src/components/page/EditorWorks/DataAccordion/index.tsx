@@ -9,6 +9,7 @@ import BaseError from "@utils/abstruct/error";
 import { WorksDTO } from "@models/entity/works";
 import { SkillsDTO } from "@models/entity/skills";
 import { UploadDTO } from "@usecases/storage/uploadToS3";
+import { DeleteDTO } from "@usecases/storage/deleteFromS3";
 import { Title, Thumbnail, Description, Repository, Link, Status, Created } from "@models/value_object/works";
 
 const DataAccordion: React.FC<{
@@ -59,6 +60,11 @@ const DataAccordion: React.FC<{
                 await callAPI<null, void>(
                     "DELETE",
                     "/api/works?id=" + entity.id,
+                );
+                await callAPI<DeleteDTO, void>(
+                    "DELETE",
+                    "/api/works/thumbnail",
+                    {file_url: entity.thumbnail}
                 );
             }
             props.onUIDelete();

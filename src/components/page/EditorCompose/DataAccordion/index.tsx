@@ -8,6 +8,7 @@ import { useEventApi, useValidation } from "@components/hook";
 import BaseError from "@utils/abstruct/error";
 import { ComposeDTO } from "@models/entity/compose";
 import { UploadDTO } from "@usecases/storage/uploadToS3";
+import { DeleteDTO } from "@usecases/storage/deleteFromS3";
 import { Title, Artwork, Genre, Audio, YoutubeUrl, SoundcloudUrl, XUrl } from "@models/value_object/compose";
 
 const DataAccordion: React.FC<{
@@ -58,6 +59,16 @@ const DataAccordion: React.FC<{
                 await callAPI<null, void>(
                     "DELETE",
                     `/api/compose/${entity.id}`
+                );
+                await callAPI<DeleteDTO, void>(
+                    "DELETE",
+                    "/api/compose/artwork",
+                    {file_url: entity.artwork}
+                );
+                await callAPI<DeleteDTO, void>(
+                    "DELETE",
+                    "/api/compose/audio",
+                    {file_url: entity.audio}
                 );
             }
             props.onUIDelete();
