@@ -6,7 +6,11 @@ import ServiceError from "@utils/exceptions/service";
 import { Thumbnail } from "@models/value_object/works";
 import { Artwork, Audio } from "@models/value_object/compose";
 
-export default class DeleteFromS3Service implements BaseService<void> {
+export type DeleteDTO = {
+    file_url: string;
+}
+
+export default class DeleteFromS3UseCase implements BaseService<void> {
     client: AwsS3Client;
     url_object: Thumbnail | Artwork | Audio;
     model_name: string;

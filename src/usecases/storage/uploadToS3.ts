@@ -6,7 +6,13 @@ import ServiceError from "@utils/exceptions/service";
 import { Thumbnail } from "@models/value_object/works";
 import { Artwork, Audio } from "@models/value_object/compose";
 
-export default class UploadToS3Service implements BaseService<Thumbnail|Artwork|Audio> {
+
+export type UploadDTO = {
+    file_buffer: [];
+    file_name: string;
+}
+
+export default class UploadToS3UseCase implements BaseService<Thumbnail|Artwork|Audio> {
     client: AwsS3Client;
     file_buffer: Buffer;
     model_name: "Works" | "Compose";
