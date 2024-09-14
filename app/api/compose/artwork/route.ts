@@ -33,7 +33,7 @@ export async function POST(request: Request) {
 
             return Response.json(
                 {
-                    thumbnail: response.value
+                    artwork: response.value
                 },
                 {
                     status: 200

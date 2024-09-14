@@ -96,7 +96,7 @@ const DataAccordion: React.FC<{
                     "/api/works/thumbnail",
                     upload_data
                 );
-                if (response) onEditHandler({thumbnail: response.thumbnail});
+                if (response) onEditHandler(response);
             }
         }
     );
@@ -106,7 +106,7 @@ const DataAccordion: React.FC<{
         const buffer = Buffer.from(arrayBuffer);
         setUploadData({
             file_buffer: Array.from(buffer), 
-            file_name: `${entity.id}.${file.name.split(".")[1]}`,
+            file_name: file.name,
         });
     };
 
