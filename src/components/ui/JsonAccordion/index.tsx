@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import { PropsWithChildren } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, IconButton, Divider, Typography } from "@mui/material"
 import { ExpandMore, Delete, Add } from "@mui/icons-material"
@@ -9,10 +11,13 @@ const JsonAccordion: React.FC<PropsWithChildren<{
     onAdd: () => void;
     onClosed: () => void;
 }>> = (props) => {
+    const [is_open, toggleClosed] = useState(false);
+
     return (
         <>
             <Accordion onChange={
                 (e)=>{
+                    toggleClosed(!is_open);
                     const is_closed = e.currentTarget.getAttribute("aria-expanded") === "true";
                     if (is_closed) props.onClosed();
                 }
@@ -41,6 +46,7 @@ const JsonAccordion: React.FC<PropsWithChildren<{
                     color="error" 
                     sx={styles.button}
                     onClick={props.onDelete}
+                    disabled={is_open}
                 >
                     <Delete />
                 </IconButton>
@@ -48,6 +54,7 @@ const JsonAccordion: React.FC<PropsWithChildren<{
                     color="success" 
                     sx={styles.button}
                     onClick={props.onAdd}
+                    disabled={is_open}
                 >
                     <Add />
                 </IconButton>

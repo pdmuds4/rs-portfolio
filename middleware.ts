@@ -2,11 +2,13 @@ import { NextResponse, NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
     if (request.nextUrl.pathname.startsWith("/api")) {
-        if (request.headers.get('X-API-Key') === process.env.API_KEY) {
+        if (request.headers.get('X-API-Key') === process.env.NEXT_PUBLIC_API_KEY) {
             return NextResponse.next();
         } else {
-            return new NextResponse(
-                'Invalid API KEY', 
+            return Response.json(
+                {
+                    message: 'Invalid API KEY', 
+                },
                 {
                     status: 400
                 }
@@ -24,8 +26,10 @@ export function middleware(request: NextRequest) {
             if (username === 'admin' && password === 'admin') {
                 return NextResponse.next()
             } else {
-                return new NextResponse(
-                    'Invalid credentials', 
+                return Response.json(
+                    { 
+                        message: 'Invalid credentials', 
+                    },
                     {
                         status: 401,
                         headers: {
@@ -35,8 +39,10 @@ export function middleware(request: NextRequest) {
                 )
             }
         } else {
-            return new NextResponse(
-                'Authentication required', 
+            return Response.json(
+                {
+                    message: 'Authentication required', 
+                },
                 {
                     status: 401,
                     headers: {

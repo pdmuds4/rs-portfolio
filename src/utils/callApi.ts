@@ -4,13 +4,13 @@ const callAPI = async <ReqT, ResT>(
     method: string, 
     endpoint: string, 
     req_body?: ReqT
-): Promise<ResT|undefined> => {
+): Promise<ResT|void> => {
     try {
         const response = await axios({
             headers: {
                 'Allow-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',                  
-                'X-API-Key': process.env.API_KEY,
+                'X-API-Key': process.env.NEXT_PUBLIC_API_KEY,
             },
             method: method,
             url: endpoint,

@@ -5,9 +5,10 @@ import * as styles from "./styles";
 
 const JsonProp: React.FC<{
     label: string;
-    type: "text" | "number" | "boolean" | "array" | "select" | "file" | "date";
+    type: "text" | "textarea" | "number" | "boolean" | "array" | "select" | "file" | "date";
     error?: boolean;
     value: string | number | boolean | number[] | Date;
+    onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }> = (props) => {
     const formatDate = (date: Date): string => {
         const year = date.getFullYear();
@@ -33,7 +34,19 @@ const JsonProp: React.FC<{
                         label={props.label}
                         defaultValue={props.value}
                         error={props.error}
-                        //onChange={}
+                        onChange={(event) => props.onChange(event)}
+                    />
+                ) : props.type === "textarea" ? (
+                    <TextField
+                        fullWidth
+                        variant="filled"
+                        size="small"
+                        multiline
+                        maxRows={4}
+                        label={props.label}
+                        defaultValue={props.value}
+                        error={props.error}
+                        onChange={(event) => props.onChange(event)}
                     />
                 ) : props.type === "number" ? (
                     <TextField
