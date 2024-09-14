@@ -47,7 +47,7 @@ const DataAccordion: React.FC<{
     const {eventHandler: onServerDelete } = useEventApi(
         async () => {
             if (!error) {
-                await callAPI<null, {message: string}>(
+                await callAPI<null, void>(
                     "DELETE",
                     "/api/hobbylikes?id=" + entity.id,
                 );
