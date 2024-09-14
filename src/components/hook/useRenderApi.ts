@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { Context } from '@components/provider/AuthorContextProvider';
 
 export const useRenderApi = <ResponseT>(

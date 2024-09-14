@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { EditorSection } from "@components/ui";
 import DataAccordion from "./DataAccordion";
 
