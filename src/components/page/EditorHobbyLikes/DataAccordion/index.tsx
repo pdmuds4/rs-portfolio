@@ -94,7 +94,7 @@ const DataAccordion: React.FC<{
                     key={1} 
                     type="text" 
                     label="title"
-                    value={props.entity.title}
+                    value={entity.title}
                     onChange={(event) => onEditHandler({title: event.target.value})}
                     error={error?.class_name === "Title"}
                 />
@@ -102,7 +102,7 @@ const DataAccordion: React.FC<{
                     key={2} 
                     type="text" 
                     label="panel" 
-                    value={props.entity.panel} 
+                    value={entity.panel} 
                     onChange={(event) => onEditHandler({panel: event.target.value})}
                     error={error?.class_name === "Panel"}
                 />
@@ -110,7 +110,7 @@ const DataAccordion: React.FC<{
                     key={3} 
                     type="textarea" 
                     label="detail" 
-                    value={props.entity.detail}
+                    value={entity.detail}
                     onChange={(event) => onEditHandler({detail: event.target.value})}
                     error={error?.class_name === "Detail"}
                 />

@@ -28,3 +28,9 @@ export const checkbox_list: SxProps = {
     maxHeight: 200,
     '& ul': { padding: 0 },
 }
+
+export const upload_preview: CSSProperties = {
+    width: "auto",
+    height: "200px",
+    objectFit: 'cover',
+}

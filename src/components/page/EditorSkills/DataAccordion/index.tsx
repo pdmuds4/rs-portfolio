@@ -96,7 +96,7 @@ const DataAccordion: React.FC<{
                     key={1}
                     type="text"
                     label="title" 
-                    value={props.entity.title} 
+                    value={entity.title} 
                     onChange={(event)=>onEditHandler({title: event.target.value})}
                     error={error?.class_name === "Title"}
                 />
@@ -104,7 +104,7 @@ const DataAccordion: React.FC<{
                     key={2} 
                     type="text"
                     label="symbol"
-                    value={props.entity.symbol} 
+                    value={entity.symbol} 
                     onChange={(event)=>onEditHandler({symbol: event.target.value})}
                     error={error?.class_name === "Symbol"}
                 />
@@ -112,14 +112,14 @@ const DataAccordion: React.FC<{
                     key={3} 
                     type="number"
                     label="progress" 
-                    value={props.entity.progress} 
+                    value={entity.progress} 
                     onChange={(event)=>onEditHandler({progress: Number(event.target.value)})}
                 />
                 <JsonProp 
                     key={4} 
                     type="select" 
                     label="category"
-                    value={"frontend"} 
+                    value={entity.category} 
                     onChange={(event)=>onEditHandler({category: event.target.value})}
                 />
             </Grid2>

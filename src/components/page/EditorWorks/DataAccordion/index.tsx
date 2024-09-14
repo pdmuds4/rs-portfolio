@@ -132,15 +132,15 @@ const DataAccordion: React.FC<{
                     key={1} 
                     label="title" 
                     type="text" 
-                    value={props.entity.title}
+                    value={entity.title}
                     onChange={(event)=>onEditHandler({title: event.target.value})}
                     error={error?.class_name === "Title"}
                 />
                 <JsonProp 
                     key={2} 
                     label="thumnail" 
-                    type="file"
-                    value={props.entity.thumbnail}
+                    type="imgfile"
+                    value={entity.thumbnail}
                     onChange={(event) => createUploadData(event.target.files[0])}
                     error={error?.class_name === "Thumbnail"}
                 />
@@ -148,7 +148,7 @@ const DataAccordion: React.FC<{
                     key={3} 
                     label="description" 
                     type="textarea" 
-                    value={props.entity.description}
+                    value={entity.description}
                     onChange={(event)=>onEditHandler({description: event.target.value})}
                     error={error?.class_name === "Description"}
                 />
@@ -156,7 +156,7 @@ const DataAccordion: React.FC<{
                     key={4} 
                     label="techs" 
                     type="array" 
-                    value={props.entity.techs}
+                    value={entity.techs}
                     onChange={(skill_id)=>onEditHandler({techs: [...entity.techs, skill_id]})}
                     skills_data={props.skills_data}
                 />
@@ -164,7 +164,7 @@ const DataAccordion: React.FC<{
                     key={5} 
                     label="repository" 
                     type="text" 
-                    value={props.entity.repository}
+                    value={entity.repository}
                     onChange={(event)=>onEditHandler({repository: event.target.value})}
                     error={error?.class_name === "Repository"}
                 />
@@ -172,7 +172,7 @@ const DataAccordion: React.FC<{
                     key={6} 
                     label="link" 
                     type="text" 
-                    value={props.entity.link || ""}
+                    value={entity.link || ""}
                     onChange={(event)=>onEditHandler({link: event.target.value})}
                     error={error?.class_name === "Link"}
                 />
@@ -180,22 +180,22 @@ const DataAccordion: React.FC<{
                     key={7} 
                     label="isprivate" 
                     type="boolean" 
-                    value={props.entity.isprivate}
+                    value={entity.isprivate}
                     onChange={(value)=>onEditHandler({isprivate: value})}
                 />
                 <JsonProp 
                     key={8} 
                     label="status" 
                     type="select" 
-                    value={props.entity.status}
+                    value={entity.status}
                     onChange={(event)=>onEditHandler({status: event.target.value})}
                     error={error?.class_name === "Status"}
                 />
                 <JsonProp 
                     key={9} 
-                    label="created" 
+                    label="created"
                     type="date" 
-                    value={new Date(props.entity.created)}
+                    value={new Date(entity.created)}
                     onChange={(event)=>onEditHandler({created: new Date(event.target.value)})}
                     error={error?.class_name === "Created"}
                 />

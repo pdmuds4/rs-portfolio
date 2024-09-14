@@ -7,7 +7,7 @@ import { SkillsDTO } from "@models/entity/skills";
 
 const JsonProp: React.FC<{
     label: string;
-    type: "text" | "textarea" | "number" | "boolean" | "array" | "select" | "file" | "date";
+    type: "text" | "textarea" | "number" | "boolean" | "array" | "select" | "imgfile" | "audiofile" | "date";
     error?: boolean;
     value: string | number | boolean | number[] | Date;
     onChange: (event: any) => void;
@@ -122,33 +122,41 @@ const JsonProp: React.FC<{
                         )))
                     }
                     </Select>
-                ) : props.type === "file" ? (
-                    <Grid2 container spacing={2}>
-                        <Button
-                            component="label"
-                            variant="contained"
-                            tabIndex={-1}
-                            startIcon={<CloudUpload />}
-                            color={props.error ? "error" : "primary"}
-                        >
-                            Upload
-                            <input 
-                                type="file" 
-                                style={styles.upload_input} 
-                                onChange={(event) => props.onChange(event)}
-                            />
-                        </Button>
-                        <Button 
-                            variant="contained" 
-                            color="success"
-                            startIcon={<DriveFileMove />}
-                            disabled={!Boolean(props.value)}
-                            href={props.value as string}
-                            target="_blank"
-                        >
-                            Check File
-                        </Button>
-                    </Grid2>
+                ) : props.type.includes("file") ? (
+                    <>
+                        <Grid2 container spacing={2}>
+                            <Button
+                                component="label"
+                                variant="contained"
+                                tabIndex={-1}
+                                startIcon={<CloudUpload />}
+                                color={props.error ? "error" : "primary"}
+                            >
+                                Upload
+                                <input 
+                                    type="file" 
+                                    style={styles.upload_input} 
+                                    onChange={(event) => props.onChange(event)}
+                                />
+                            </Button>
+                            <Button 
+                                variant="contained" 
+                                color="success"
+                                startIcon={<DriveFileMove />}
+                                disabled={!Boolean(props.value)}
+                                href={props.value as string}
+                                target="_blank"
+                            >
+                                Check File
+                            </Button>
+                        </Grid2>
+                        <Grid2 size={12} marginTop={"20px"}>
+                        { props.type === "imgfile" ?
+                            (<img src={props.value as string} alt="preview image" style={styles.upload_preview} />) :
+                            (<audio controls src={props.value as string} />)
+                        }
+                        </Grid2>
+                    </>
                 ) : props.type === "date" ? (
                     <input 
                         type="date"

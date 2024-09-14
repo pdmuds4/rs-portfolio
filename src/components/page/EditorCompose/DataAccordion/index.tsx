@@ -145,15 +145,15 @@ const DataAccordion: React.FC<{
                     key={1} 
                     label="title" 
                     type="text" 
-                    value={props.entity.title} 
+                    value={entity.title} 
                     onChange={(event)=>onEditHandler({title: event.target.value})}
                     error={error?.class_name === "Title"}
                 />
                 <JsonProp 
                     key={2} 
                     label="artwork" 
-                    type="file" 
-                    value={props.entity.artwork}
+                    type="imgfile" 
+                    value={entity.artwork}
                     onChange={(event)=>createUploadData(event.target.files[0], setUploadArtWork)}
                     error={error?.class_name === "Artwork"}
                 />
@@ -161,15 +161,15 @@ const DataAccordion: React.FC<{
                     key={3} 
                     label="genre" 
                     type="text" 
-                    value={props.entity.genre}
+                    value={entity.genre}
                     onChange={(event)=>onEditHandler({genre: event.target.value})}
                     error={error?.class_name === "Genre"}
                 />
                 <JsonProp 
                     key={4} 
                     label="audio" 
-                    type="file" 
-                    value={props.entity.audio}
+                    type="audiofile" 
+                    value={entity.audio}
                     onChange={(event)=>createUploadData(event.target.files[0], setUploadAudio)}
                     error={error?.class_name === "Audio"}
                 />
@@ -177,7 +177,7 @@ const DataAccordion: React.FC<{
                     key={5} 
                     label="youtube url" 
                     type="text" 
-                    value={props.entity.youtube}
+                    value={entity.youtube}
                     onChange={(event)=>onEditHandler({youtube: event.target.value})}
                     error={error?.class_name === "YoutubeUrl"}
                 />
@@ -185,7 +185,7 @@ const DataAccordion: React.FC<{
                     key={6} 
                     label="soundcloud url" 
                     type="text" 
-                    value={props.entity.soundcloud}
+                    value={entity.soundcloud}
                     onChange={(event)=>onEditHandler({soundcloud: event.target.value})}
                     error={error?.class_name === "SoundcloudUrl"}
                 />
@@ -193,7 +193,7 @@ const DataAccordion: React.FC<{
                     key={7} 
                     label="x url" 
                     type="text" 
-                    value={props.entity.x}
+                    value={entity.x}
                     onChange={(event)=>onEditHandler({x: event.target.value})}
                     error={error?.class_name === "XUrl"}
                 />
