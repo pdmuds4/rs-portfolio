@@ -49,7 +49,7 @@ export default class WorksRepository implements BaseRepository<WorksEntity> {
                             work.link ? new Link(work.link) : null,
                             work.isprivate,
                             new Status     (work.status),
-                            new Created    (new Date(work.created_at)),
+                            new Created    (new Date(work.created)),
                         )
                     )
                 } catch (error) {

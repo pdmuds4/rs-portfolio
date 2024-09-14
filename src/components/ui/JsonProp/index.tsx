@@ -3,12 +3,15 @@ import { Grid2, Typography, TextField, Switch, List, ListItem, ListItemButton, L
 import { CloudUpload, DriveFileMove } from "@mui/icons-material";
 import * as styles from "./styles";
 
+import { SkillsDTO } from "@models/entity/skills";
+
 const JsonProp: React.FC<{
     label: string;
     type: "text" | "textarea" | "number" | "boolean" | "array" | "select" | "file" | "date";
     error?: boolean;
     value: string | number | boolean | number[] | Date;
     onChange: (event: any) => void;
+    skills_data?: SkillsDTO[];
 }> = (props) => {
     const formatDate = (date: Date): string => {
         const year = date.getFullYear();
@@ -62,7 +65,7 @@ const JsonProp: React.FC<{
                 ) : props.type === "boolean" ? (
                     <Switch 
                         defaultChecked={props.value as boolean}
-                        // onChange={}
+                        onChange={() => props.onChange(!props.value as boolean)}
                     />
                 ) : props.type === "array" ? (
                     <List
@@ -73,23 +76,27 @@ const JsonProp: React.FC<{
                             <li key={`section-${section}`}>
                                 <ul>
                                     <ListSubheader>{section}</ListSubheader>
-                                    {[0, 1, 2].map((item) => (
+                                    {props.skills_data ? props.skills_data
+                                    .filter((skill)=>skill.category === section)
+                                    .map((skill) => (
                                     <ListItem 
-                                        key={`item-${item}`}
+                                        key={skill.id}
                                         secondaryAction={
                                             <Checkbox
                                                 edge="end"
-                                                // onChange={handleToggle(value)}
-                                                defaultChecked={true}
+                                                onChange={()=>props.onChange(skill.id)}
+                                                defaultChecked={
+                                                    (props.value as number[]).includes(skill.id)
+                                                }
                                             />
                                         }
                                         disablePadding
                                     >
                                         <ListItemButton>
-                                            <ListItemText primary={item} />
+                                            <ListItemText primary={skill.title} />
                                         </ListItemButton>
                                     </ListItem>
-                                    ))}
+                                    )): null}
                                 </ul>
                             </li>
                         ))}
@@ -122,12 +129,13 @@ const JsonProp: React.FC<{
                             variant="contained"
                             tabIndex={-1}
                             startIcon={<CloudUpload />}
+                            color={props.error ? "error" : "primary"}
                         >
                             Upload
                             <input 
                                 type="file" 
                                 style={styles.upload_input} 
-                                onChange={(event) => console.log(event.target.files)}
+                                onChange={(event) => props.onChange(event)}
                             />
                         </Button>
                         <Button 
@@ -136,6 +144,7 @@ const JsonProp: React.FC<{
                             startIcon={<DriveFileMove />}
                             disabled={!Boolean(props.value)}
                             href={props.value as string}
+                            target="_blank"
                         >
                             Check File
                         </Button>
@@ -143,8 +152,8 @@ const JsonProp: React.FC<{
                 ) : props.type === "date" ? (
                     <input 
                         type="date"
-                        value={formatDate(props.value as Date)}
-                        onChange={(event) => console.log(event.target.value)}
+                        defaultValue={formatDate(props.value as Date)}
+                        onChange={(event) => props.onChange(event)}
                     />
                 ) : null 
                 }

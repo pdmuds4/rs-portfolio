@@ -8,7 +8,7 @@ import { Artwork, Audio } from "@models/value_object/compose";
 
 
 export type UploadDTO = {
-    file_buffer: [];
+    file_buffer: number[];
     file_name: string;
 }
 
