@@ -76,7 +76,6 @@ const DataAccordion: React.FC<{
                     "/api/hobbylikes",
                     entity
                 );
-                console.log(response == entity);
                 if (response?.id == entity.id) setIsCreate(false);
             }
         }
