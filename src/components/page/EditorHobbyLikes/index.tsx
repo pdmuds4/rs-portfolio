@@ -21,7 +21,7 @@ const EditorHobbyLikes: React.FC = () => {
         setData
     );
 
-    function deleteHandler(id: number) {
+    const deleteHandler = (id: number) => {
         setData(data.filter((hobbylikes) => hobbylikes.id !== id));
     };
 
@@ -48,7 +48,7 @@ const EditorHobbyLikes: React.FC = () => {
             <DataAccordion
                 key={hobbylikes.id}
                 entity={hobbylikes}
-                onUIDelete={()=>deleteHandler(hobbylikes.id)}
+                onUIDelete={() => deleteHandler(hobbylikes.id)}
                 onUIAdd={() => addHandler(index)}
             />
         ))}
