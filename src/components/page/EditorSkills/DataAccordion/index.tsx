@@ -34,11 +34,7 @@ const DataAccordion: React.FC<{
 
     // 新規作成時/編集時の判定
     useEffect(() => {
-        if (
-            props.entity.title === "" && 
-            props.entity.symbol === "" && 
-            props.entity.progress === 1
-        ) {
+        if (props.entity.title === "") {
             setIsCreate(true);
         }
     }, [entity]);

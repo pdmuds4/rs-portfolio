@@ -33,11 +33,7 @@ const DataAccordion: React.FC<{
 
     // 新規作成時/編集時の判定
     useEffect(() => {
-        if (
-            props.entity.title === "" && 
-            props.entity.panel === "" && 
-            props.entity.detail === ""
-        ) {
+        if (props.entity.title === "") {
             setIsCreate(true);
         }
     }, [entity]);
