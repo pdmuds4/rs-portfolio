@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Box, Select, Grid2, MenuItem } from "@mui/material";
 import { EditorSection } from "@components/ui";
 import DataAccordion from "./DataAccordion";
 
