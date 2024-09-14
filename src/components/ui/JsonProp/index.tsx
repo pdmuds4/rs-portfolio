@@ -8,7 +8,7 @@ const JsonProp: React.FC<{
     type: "text" | "textarea" | "number" | "boolean" | "array" | "select" | "file" | "date";
     error?: boolean;
     value: string | number | boolean | number[] | Date;
-    onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    onChange: (event: any) => void;
 }> = (props) => {
     const formatDate = (date: Date): string => {
         const year = date.getFullYear();
@@ -57,7 +57,7 @@ const JsonProp: React.FC<{
                         label={props.label}
                         defaultValue={props.value}
                         error={props.error}
-                        //onChange={}
+                        onChange={(event) => props.onChange(event)}
                     />
                 ) : props.type === "boolean" ? (
                     <Switch 
@@ -100,7 +100,7 @@ const JsonProp: React.FC<{
                         label={props.label}
                         fullWidth
                         variant="filled"
-                        // onChange={}
+                        onChange={(event) => props.onChange(event)}
                     >   
                     {props.label === "status" ? (
                         ["未公開", "公開中", "再開発中", "停止中"].map((status, index) => (

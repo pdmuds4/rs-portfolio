@@ -13,7 +13,7 @@ const EditorSection: React.FC<PropsWithChildren<{
             <Heading>
                 {props.hedding}
             </Heading>
-            <Divider />
+            <Divider sx={styles.divider} />
             <Container sx={styles.container}>
                 {props.children}
             </Container>
