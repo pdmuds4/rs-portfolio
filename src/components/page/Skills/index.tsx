@@ -6,12 +6,18 @@ import { DeveloperMode, SettingsSuggest, Storage, CloudUpload } from "@mui/icons
 import { Section, Heading } from "@components/ui"
 import * as styles from "./style"
 
+import { useGetterApi } from "@components/hook";
+import { SkillsDTO } from "@models/entity/skills";
+
 import FrontendPanel from "./FrontendPanel";
 import BackendPanel from "./BackendPanel";
 import DatabasePanel from "./DatabasePanel";
 import DevopsPanel from "./DevopsPanel";
 
 const Skills: React.FC = () => {
+    const [data, setData] = useState<SkillsDTO[]>([]);
+    useGetterApi<SkillsDTO[]>("/api/skills", setData);
+
     const [value, setValue] = useState("0");
     const category_data = [
         {
@@ -75,10 +81,10 @@ const Skills: React.FC = () => {
                                 ))}
                             </Tabs>
                         </Box>
-                        <FrontendPanel value="0" />
-                        <BackendPanel  value="1" />
-                        <DatabasePanel value="2" />
-                        <DevopsPanel   value="3" />
+                        <FrontendPanel value="0" data={data.filter((skill) => skill.category === "frontend")} />
+                        <BackendPanel  value="1" data={data.filter((skill) => skill.category === "backend")} />
+                        <DatabasePanel value="2" data={data.filter((skill) => skill.category === "database")} />
+                        <DevopsPanel   value="3" data={data.filter((skill) => skill.category === "devops")}/>
                     </TabContext>
                     
                 </Card>

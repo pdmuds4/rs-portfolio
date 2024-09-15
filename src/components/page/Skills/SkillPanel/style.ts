@@ -4,16 +4,6 @@ export const body: SxProps = {
     bgcolor: "#3c4858",
     position: 'relative',
     padding: { xs: "10px 0", md: "20px 0" },
-    '&::after': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        width: '20%',
-        background: 'linear-gradient(to left, #3c4858, transparent)',
-        pointerEvents: 'none',
-    },
 }
 
 export const contain: SxProps = {
