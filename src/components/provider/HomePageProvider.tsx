@@ -17,7 +17,7 @@ type ContextProps = {
 export const Context = createContext({} as ContextProps);
 
 export const HomePageProvider: React.FC<PropsWithChildren> = (props) => {
-    const [page_is_loading, setOpenLoader] = useState(false);
+    const [page_is_loading, setOpenLoader] = useState(true);
     const [page_is_success, setOpenSuccess] = useState(false);
     const [page_is_error, setOpenError] = useState(false);
     const [error_message, setErrorMsg] = useState('');

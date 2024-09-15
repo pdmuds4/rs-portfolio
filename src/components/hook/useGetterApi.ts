@@ -18,7 +18,6 @@ export const useGetterApi = <ResponseT>(
     }
 
     useEffect(() => {
-        setOpenLoader(true);
         apiCall()
             .then((response)=>{
                 dataSetter(response as ResponseT);
