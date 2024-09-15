@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Divider, Card, Grid2, Box } from "@mui/material"
 import * as styles from "./style";
 import { Section, Heading } from "@components/ui"
@@ -7,34 +7,27 @@ import { Section, Heading } from "@components/ui"
 import DevelopCard from "./DevelopCard";
 import DevelopPanel from "./DevelopPanel";
 
+import { WorksDTO } from "@models/entity/works";
+import { SkillsDTO } from "@models/entity/skills";
+import { useGetterApi } from "@components/hook";
+
 const Works: React.FC = () => {
-    const data = [
-        {
-            title: "MediQal now",
-            thumbnail: "https://bjcvqtifhfyhgfkllzki.supabase.co/storage/v1/object/public/works-development/SS%202024-08-24%2019.31.55.png",
-            created: "2024/08/09",
-            github: "https://github.com/pdmuds4/mediqal-now",
-            link: "https://mti-internship.s3.ap-northeast-1.amazonaws.com/index.html",
-            isprivate: false,
-            status: 1,
-            description: "あいうえお",
-            techsID: [1, 2, 3, 4, 5]
-        },
-        {
-            title: "Shopping Mapper",
-            thumbnail: "https://bjcvqtifhfyhgfkllzki.supabase.co/storage/v1/object/public/works-development/sm.png",
-            created: "2024/7/30",
-            github: "https://github.com/pdmuds4/shopping-mapper",
-            link: "https://shopping-mapper.vercel.app/",
-            isprivate: false,
-            status: 0,
-            description: "あいうえお",
-            techsID: [1, 2, 3, 4, 5]
-        }
-    ]
+    const [data, setData] = useState<WorksDTO[]>([]);
+    useGetterApi<WorksDTO[]>("/api/works", setData);
 
-    const [panelApp, setPanelApp] = useState(data[0]);
+    const [techs_data, setTechsData] = useState<SkillsDTO[]>([]);
+    useGetterApi<SkillsDTO[]>("/api/skills", setTechsData);
 
+    const [panelApp, setPanelApp] = useState<WorksDTO|null>(null);
+    useEffect(() => {if(data) setPanelApp(data[0])}, [data]);
+
+    const formatDate = (date: Date) => {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}年${month}月${day}日`;
+    }
+    
     return (
         <Section id="works">
             <Heading>
@@ -42,7 +35,7 @@ const Works: React.FC = () => {
             </Heading>
             <Divider />
             <Card sx={styles.card_body}>
-                <Grid2 container spacing={3}>
+                <Grid2 container spacing={{xs: 0, md: 3}}>
                     <Grid2 size={{xs: 12, md: 5}} sx={styles.carousel_wrapper}>
                         <Box sx={styles.cards_carousel}>
                             <Box height={{xs: 5, md: 10}} />
@@ -51,7 +44,7 @@ const Works: React.FC = () => {
                                 key={index}
                                 title={item.title}
                                 thumbnail={item.thumbnail}
-                                created={item.created}
+                                created={formatDate(new Date(item.created))}
                                 changePanel={() => setPanelApp(item)}
                             />
                         ))}
@@ -59,15 +52,19 @@ const Works: React.FC = () => {
                         </Box>
                     </Grid2>
                     <Grid2 size={{xs: 12, md: 7}} p={{xs: "10px 0", md: "20px 0"}}>
+                    { panelApp &&
                         <DevelopPanel
                             title={panelApp.title}
-                            github={panelApp.github}
+                            github={panelApp.repository}
                             link={panelApp.link}
                             isprivate={panelApp.isprivate}
                             status={panelApp.status}
                             description={panelApp.description}
-                            techsID={panelApp.techsID}
+                            techs={
+                                techs_data.filter((item) => panelApp.techs.includes(item.id))
+                            }
                         />
+                    }
                     </Grid2>
                 </Grid2>
             </Card>

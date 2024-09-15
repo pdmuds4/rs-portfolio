@@ -38,4 +38,12 @@ export const techs: SxProps = {
     display: 'flex',
     gap: 1,
     marginTop: 'auto',
+    overflow: 'auto',
+    width: '100%',
+    scrollSnapType: 'x mandatory',
+    '& > *': {
+        scrollSnapAlign: 'center',
+        flexShrink: 0,
+    },
+    '::-webkit-scrollbar': { display: 'none' },
 }

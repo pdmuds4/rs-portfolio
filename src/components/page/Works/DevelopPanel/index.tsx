@@ -3,17 +3,17 @@ import { GitHub, Public } from "@mui/icons-material";
 import * as styles from './style';
 import { Text } from "@components/ui";
 
+import { SkillsDTO } from "@models/entity/skills";
+
 const DevelopPanel: React.FC<{
     title: string;
     github: string;
-    link?: string;
+    link?: string | null;
     isprivate: boolean;
-    status: number; // 0: 未公開, 1: 公開中, 2: 再開発中, 3: 停止中
+    status: number;
     description: string;
-    techsID: number[];
+    techs: SkillsDTO[];
 }> = (props) => {
-    // [TODO]: techsIDをもとにAPIを叩いて技術スタックを表示する
-
     return (
         <Card sx={styles.body}>
             <CardContent sx={styles.container}>
@@ -63,13 +63,16 @@ const DevelopPanel: React.FC<{
                     {props.description}
                 </Text>
                 <Box sx={styles.techs}>
-                    <AvatarGroup>
-                        {/* <Tooltip title="React" arrow>
+                    <AvatarGroup max={Infinity}>
+                    {props.techs.map((tech, index) => (
+                        <Tooltip title={tech.title} arrow key={index}>
                             <Avatar 
-                                src=""
-                                alt="React"
+                                sx={{bgcolor: "white"}}
+                                src={tech.symbol}
+                                alt={tech.title}
                             />
-                        </Tooltip> */}
+                        </Tooltip>
+                    ))}
                     </AvatarGroup>
                 </Box>
             </CardContent>
