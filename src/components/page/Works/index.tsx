@@ -7,6 +7,7 @@ import { Section, Heading } from "@components/ui"
 import DevelopCard from "./DevelopCard";
 import DevelopPanel from "./DevelopPanel";
 
+import formatDate from "@utils/formatDate";
 import { WorksDTO } from "@models/entity/works";
 import { SkillsDTO } from "@models/entity/skills";
 import { useGetterApi } from "@components/hook";
@@ -20,13 +21,6 @@ const Works: React.FC = () => {
 
     const [panelApp, setPanelApp] = useState<WorksDTO|null>(null);
     useEffect(() => {if(data) setPanelApp(data[0])}, [data]);
-
-    const formatDate = (date: Date) => {
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        return `${year}年${month}月${day}日`;
-    }
     
     return (
         <Section id="works">
