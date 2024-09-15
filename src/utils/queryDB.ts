@@ -12,7 +12,7 @@ export default async function queryDB<QueryDTO, ResDTO>(
         if (error instanceof Error) {
             throw new BaseError(
                 503,
-                "infrastructure",
+                "Infrastructure",
                 "Any",
                 "MongoDBClient",
                 "MongoDB Atrasとの接続開始に失敗しました",

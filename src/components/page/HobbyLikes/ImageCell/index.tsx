@@ -32,6 +32,7 @@ const ImageCell: React.FC<{
             <img 
                 style={styles.image}
                 src={props.src}
+                alt={props.title}
                 loading="lazy"
             />
             <ImageListItemBar
