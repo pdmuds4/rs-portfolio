@@ -12,3 +12,5 @@ export { default as JsonProp } from "./JsonProp";
 export { default as LoadingSnack } from "./LoadingSnack";
 export { default as SuccessSnack } from "./SuccessSnack";
 export { default as ErrorSnack } from "./ErrorSnack";
+
+export { default as LoadingBackDrop } from "./LoadingBackDrop";
