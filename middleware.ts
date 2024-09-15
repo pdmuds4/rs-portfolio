@@ -23,7 +23,7 @@ export function middleware(request: NextRequest) {
             const [, base64Credentials] = basicAuth.split(' ')
             const [username, password] = Buffer.from(base64Credentials, 'base64').toString().split(':')
 
-            if (username === 'admin' && password === 'admin') {
+            if (username === process.env.BASIC_USERNAME && password === process.env.BASIC_PASSWORD) {
                 return NextResponse.next()
             } else {
                 return Response.json(
