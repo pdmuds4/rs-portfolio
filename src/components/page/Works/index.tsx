@@ -20,7 +20,7 @@ const Works: React.FC = () => {
     useGetterApi<SkillsDTO[]>("/api/skills", setTechsData);
 
     const [panelApp, setPanelApp] = useState<WorksDTO|null>(null);
-    useEffect(() => {if(data) setPanelApp(data[0])}, [data]);
+    useEffect(() => {if(data) setPanelApp(data.at(-1) as WorksDTO)}, [data]);
     
     return (
         <Section id="works">
