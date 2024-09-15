@@ -1,4 +1,5 @@
 import { SxProps } from "@mui/material";
+import { SkillsDTO } from "@models/entity/skills";
 
 export const body: SxProps = {
     height: "300px",
@@ -34,7 +35,17 @@ export const chips: SxProps = {
     gap: 1,
 }
 
+export const description: SxProps = {
+    fontSize: {xs: "0.9rem", md: "1rem"},
+    lineHeight: {xs: "1.5", md: "1.7"},
+}
+
+export const techs_group: SxProps = {
+    padding: "0 8px"
+}
+
 export const techs: SxProps = {
+    padding: 1,
     display: 'flex',
     gap: 1,
     marginTop: 'auto',
@@ -46,4 +57,18 @@ export const techs: SxProps = {
         flexShrink: 0,
     },
     '::-webkit-scrollbar': { display: 'none' },
+}
+
+export const tech_avatar = (category: SkillsDTO["category"]): SxProps => {
+    const color = category === "frontend" ? "#1976d2"
+                : category === "backend"  ? "#2e7d32"
+                : category === "database" ? "#9c27b0"
+                : category === "devops"   ? "#ed6c02"
+                : null;
+
+    return {
+        bgcolor: "white",
+        border: `2px solid ${color} !important`,
+        boxShadow: `0px 1px 7px ${color}`,
+    }
 }

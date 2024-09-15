@@ -14,6 +14,14 @@ const DevelopPanel: React.FC<{
     description: string;
     techs: SkillsDTO[];
 }> = (props) => {
+    const categoryOrder = ['frontend', 'backend', 'database', 'devops'];
+
+    const sortedTechs = props.techs.slice().sort((a, b) => {
+        const indexA = categoryOrder.indexOf(a.category);
+        const indexB = categoryOrder.indexOf(b.category);
+        return indexA - indexB;
+    });
+
     return (
         <Card sx={styles.body}>
             <CardContent sx={styles.container}>
@@ -59,15 +67,15 @@ const DevelopPanel: React.FC<{
                         }
                     />
                 </Box>
-                <Text>
+                <Typography sx={styles.description}>
                     {props.description}
-                </Text>
+                </Typography>
                 <Box sx={styles.techs}>
-                    <AvatarGroup max={Infinity}>
-                    {props.techs.map((tech, index) => (
+                    <AvatarGroup max={Infinity} sx={styles.techs_group}>
+                    {sortedTechs.map((tech, index) => (
                         <Tooltip title={tech.title} arrow key={index}>
                             <Avatar 
-                                sx={{bgcolor: "white"}}
+                                sx={styles.tech_avatar(tech.category)}
                                 src={tech.symbol}
                                 alt={tech.title}
                             />

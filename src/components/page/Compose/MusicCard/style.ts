@@ -17,6 +17,7 @@ export const main: SxProps = {
 
 export const artwork: SxProps = {
     width: {xs: "100%", md: "40%"},
+    height: "auto",
     boxShadow: {xs: "10px 0 10px 5px rgba(0, 0, 0, 0.3)", md: "10px 0 10px -10px rgba(0, 0, 0, 0.3)"},
 }
 
@@ -37,7 +38,7 @@ export const info_content: SxProps = {
 export const title_text: SxProps = {
     fontFamily: "Times New Roman",
     fontWeight: "bold",
-    fontSize: {xs: "1.2rem", md: "2rem"},
+    fontSize: {xs: "1rem", md: "1.5rem"},
 }
 
 export const genre_text: SxProps = {

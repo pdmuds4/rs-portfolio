@@ -35,7 +35,7 @@ const MusicCard: React.FC<{
                 <CardMedia 
                     component="img"
                     sx={styles.artwork}
-                    image="https://i1.sndcdn.com/artworks-upHBibUNbG5DIMby-yGT8Sg-t500x500.jpg"
+                    image={props.artwork}
                 />
                 <Box sx={styles.captions}>
                     <CardContent sx={styles.info_content}>
@@ -43,14 +43,14 @@ const MusicCard: React.FC<{
                             sx={styles.title_text}
                             component="div" 
                         >
-                            Azure Dawn
+                            {props.title}
                         </Typography>
                         <Typography
                             variant="subtitle1"
                             component="div"
                             sx={styles.genre_text}
                         >
-                            Mac Miller
+                            {props.genre}
                         </Typography>
                         <Box sx={styles.play_pause_button}>
                             <IconButton 
@@ -64,18 +64,18 @@ const MusicCard: React.FC<{
                             </IconButton>
                             <audio
                                 ref={audioRef}
-                                src={"/Azure Dawn.wav"}
+                                src={props.audio}
                                 onEnded={() => togglePlaying(false)}
                             />
                         </Box>
                         <Box sx={styles.check_content}>
-                            <IconButton href="">
+                            <IconButton href={props.youtube} target="_blank">
                                 <YouTube />
                             </IconButton>
-                            <IconButton href="">
+                            <IconButton href={props.soundcloud} target="_blank">
                                 <Cloud />
                             </IconButton>
-                            <IconButton href="">
+                            <IconButton href={props.x} target="_blank">
                                 <X />
                             </IconButton>
                         </Box>

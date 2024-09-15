@@ -33,7 +33,8 @@ const Works: React.FC = () => {
                     <Grid2 size={{xs: 12, md: 5}} sx={styles.carousel_wrapper}>
                         <Box sx={styles.cards_carousel}>
                             <Box height={{xs: 5, md: 10}} />
-                        {data.map((item, index) => (
+                        {data.slice().sort((a, b) => a.created < b.created ? 1 : -1)
+                        .map((item, index) => (
                             <DevelopCard 
                                 key={index}
                                 title={item.title}

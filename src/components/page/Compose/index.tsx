@@ -1,40 +1,17 @@
 "use client";
+import { useState } from "react";
 import { Divider, Card, Box } from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
 import { Section, Heading } from "@components/ui";
 import * as styles from "./style";
 import MusicCard from "./MusicCard";
 
+import { useGetterApi } from "@components/hook";
+import { ComposeDTO } from "@models/entity/compose";
+
 const Compose: React.FC = () => {
-    const data = [
-        {
-            title: "Azure Dawn",
-            artwork: "https://i1.sndcdn.com/artworks-upHBibUNbG5DIMby-yGT8Sg-t500x500.jpg",
-            genre: "Mac Miller",
-            audio: "/Azure Dawn.wav",
-            youtube: "",
-            soundcloud: "",
-            x: ""
-        },
-        {
-            title: "Azure Dawn",
-            artwork: "https://i1.sndcdn.com/artworks-upHBibUNbG5DIMby-yGT8Sg-t500x500.jpg",
-            genre: "Mac Miller",
-            audio: "/Azure Dawn.wav",
-            youtube: "",
-            soundcloud: "",
-            x: ""
-        },
-        {
-            title: "Azure Dawn",
-            artwork: "https://i1.sndcdn.com/artworks-upHBibUNbG5DIMby-yGT8Sg-t500x500.jpg",
-            genre: "Mac Miller",
-            audio: "/Azure Dawn.wav",
-            youtube: "",
-            soundcloud: "",
-            x: ""
-        },
-    ]
+    const [data, setData] = useState<ComposeDTO[]>([]);
+    useGetterApi<ComposeDTO[]>("/api/compose", setData);
 
     const [emblaRef, _] = useEmblaCarousel({ 
         loop: true,
@@ -51,10 +28,10 @@ const Compose: React.FC = () => {
                 <Box sx={styles.embla}>
                     <Box sx={styles.embla_viewport} ref={emblaRef}>
                         <Box sx={styles.embla_container}>
-                            {data.map((item, index) => (
+                            {data.reverse().map((compose, index) => (
                                 <MusicCard 
                                     key={index}
-                                    {...item}
+                                    {...compose}
                                 />
                             ))}
                         </Box>
