@@ -11,7 +11,7 @@ export type LogJson = {
 
 const Logger = pino({
     level: process.env.LOG_LEVEL || 'info',
-    transport: {
+    transport: process.env.VERCEL ? undefined : {
         targets: [
         {
             target: 'pino-pretty',
