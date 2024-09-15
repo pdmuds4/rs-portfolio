@@ -13,22 +13,22 @@ const Contact: React.FC = () => {
         {
             title: "X",
             icon: <X />,
-            href: ""
+            href: "https://x.com/pam_5596"
         },
         {
             title: "Instagram",
             icon: <Instagram />,
-            href: ""
+            href: "https://www.instagram.com/pam5596_3191"
         },
         {
             title: "Gmail",
             icon: <Google />,
-            href: ""
+            href: "https://mail.google.com/mail/?view=cm&to=ryosuke3191@gmail.com"
         },
         {
             title: "GitHub",
             icon: <GitHub />,
-            href: ""
+            href: "https://github.com/pdmuds4"
         },
     ];
 
@@ -41,6 +41,7 @@ const Contact: React.FC = () => {
                         <Button 
                             size="large"
                             color="inherit"
+                            target="_blank"
                             href={item.href}
                             sx={styles.button}
                         >
