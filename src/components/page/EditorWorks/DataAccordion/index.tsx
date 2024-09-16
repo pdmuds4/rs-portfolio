@@ -1,8 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Grid2 } from "@mui/material";
 import { JsonAccordion, JsonProp } from "@components/ui"
 import callAPI from "@utils/callApi";
+import { Context } from "@components/provider/AuthorContextProvider";
 
 import { useEventApi, useValidation, useS3 } from "@components/hook";
 import BaseError from "@utils/abstruct/error";
@@ -17,6 +18,7 @@ const DataAccordion: React.FC<{
     onUIAdd: () => void,
     skills_data: SkillsDTO[],
 }> = (props) => {
+    const { s3Client } = useContext(Context);
     const [entity, setEntity] = useState(props.entity);
     const [error, setError] = useState<BaseError|null>(null);
 
@@ -94,7 +96,8 @@ const DataAccordion: React.FC<{
             const usecase = new UploadThumbnailUseCase(client, request as File);
             const response = await usecase.execute();
             onEditHandler(response);
-        }
+        },
+        s3Client
     );
 
     const { eventHandler: deleteThumbnail } = useS3(
@@ -102,7 +105,8 @@ const DataAccordion: React.FC<{
             const usecase = new DeleteThumbnailUseCase(client, entity.thumbnail);
             await usecase.execute();
             onEditHandler({thumbnail: ""});
-        }
+        },
+        s3Client
     );
 
     return (

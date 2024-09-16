@@ -1,8 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Grid2 } from "@mui/material";
 import { JsonAccordion, JsonProp } from "@components/ui"
 import callAPI from "@utils/callApi";
+import { Context } from "@components/provider/AuthorContextProvider";
 
 import { useEventApi, useValidation, useS3 } from "@components/hook";
 import BaseError from "@utils/abstruct/error";
@@ -15,6 +16,7 @@ const DataAccordion: React.FC<{
     onUIDelete: () => void,
     onUIAdd: () => void
 }> = (props) => {
+    const { s3Client } = useContext(Context);
     const [entity, setEntity] = useState(props.entity);
     const [error, setError] = useState<BaseError|null>(null);
 
@@ -91,7 +93,8 @@ const DataAccordion: React.FC<{
             const usecase = new UploadArtworkUseCase(client, request as File);
             const response = await usecase.execute();
             onEditHandler(response);
-        }
+        },
+        s3Client
     );
 
     const { eventHandler: deleteArtwork } = useS3(
@@ -99,7 +102,8 @@ const DataAccordion: React.FC<{
             const usecase = new DeleteArtworkUseCase(client, entity.artwork);
             await usecase.execute();
             onEditHandler({artwork: ""});
-        }
+        },
+        s3Client
     );
 
     const { eventHandler: uploadAudio } = useS3(
@@ -107,7 +111,8 @@ const DataAccordion: React.FC<{
             const usecase = new UploadAudioUseCase(client, request as File);
             const response = await usecase.execute();
             onEditHandler(response);
-        }
+        },
+        s3Client
     );
 
     const { eventHandler: deleteAudio } = useS3(
@@ -115,7 +120,8 @@ const DataAccordion: React.FC<{
             const usecase = new DeleteAudioUseCase(client, entity.audio);
             await usecase.execute();
             onEditHandler({audio: ""});
-        }
+        },
+        s3Client
     );
 
 
