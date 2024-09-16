@@ -21,5 +21,6 @@ export const useValidation = (
                     errorSetter(error);
                 }
             });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, dependencies);
 }

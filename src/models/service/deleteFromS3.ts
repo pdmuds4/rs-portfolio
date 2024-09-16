@@ -10,7 +10,7 @@ export type DeleteDTO = {
     file_url: string;
 }
 
-export default class DeleteFromS3UseCase implements BaseService<void> {
+export default class DeleteFromS3Service implements BaseService<void> {
     client: AwsS3Client;
     url_object: Thumbnail | Artwork | Audio;
     model_name: string;

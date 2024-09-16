@@ -6,7 +6,6 @@ import { Section, Heading } from "@components/ui"
 import * as styles from "./style"
 import ImageCell from "./ImageCell"
 
-import callAPI from "@utils/callApi"
 import { useGetterApi } from "@components/hook"
 import { HobbyLikesDTO } from "@models/entity/hobbylikes"
 

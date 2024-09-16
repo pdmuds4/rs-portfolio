@@ -1,9 +1,12 @@
 "use client";
+import { useContext } from "react";
 import { Grid2, Typography, TextField, Switch, List, ListItem, ListItemButton, ListItemText, ListSubheader, Checkbox, Select, MenuItem, Button } from "@mui/material";
-import { CloudUpload, DriveFileMove } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
+import { CloudUpload, Delete } from "@mui/icons-material";
 import * as styles from "./styles";
 
 import { SkillsDTO } from "@models/entity/skills";
+import { Context } from "@components/provider/AuthorContextProvider";
 
 const JsonProp: React.FC<{
     label: string;
@@ -11,8 +14,11 @@ const JsonProp: React.FC<{
     error?: boolean;
     value: string | number | boolean | number[] | Date;
     onChange: (event: any) => void;
+    onDelete?: (event: any) => void;
     skills_data?: SkillsDTO[];
 }> = (props) => {
+    const { page_is_loading } = useContext(Context);
+
     const formatDate = (date: Date): string => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -125,12 +131,13 @@ const JsonProp: React.FC<{
                 ) : props.type.includes("file") ? (
                     <>
                         <Grid2 container spacing={2}>
-                            <Button
+                            <LoadingButton
                                 component="label"
                                 variant="contained"
                                 tabIndex={-1}
                                 startIcon={<CloudUpload />}
                                 color={props.error ? "error" : "primary"}
+                                loading={page_is_loading}
                             >
                                 Upload
                                 <input 
@@ -138,20 +145,21 @@ const JsonProp: React.FC<{
                                     style={styles.upload_input} 
                                     onChange={(event) => props.onChange(event)}
                                 />
-                            </Button>
-                            <Button 
+                            </LoadingButton>
+                            <LoadingButton 
                                 variant="contained" 
-                                color="success"
-                                startIcon={<DriveFileMove />}
-                                disabled={!Boolean(props.value)}
-                                href={props.value as string}
-                                target="_blank"
+                                color="error"
+                                startIcon={<Delete />}
+                                disabled={!Boolean(props.value) || props.error}
+                                onClick={(event) => props.onDelete ? props.onDelete(event) : null}
+                                loading={page_is_loading}
                             >
-                                Check File
-                            </Button>
+                                DELETE File
+                            </LoadingButton>
                         </Grid2>
                         <Grid2 size={12} marginTop={"20px"}>
                         { props.type === "imgfile" ?
+                            // eslint-disable-next-line @next/next/no-img-element
                             (<img src={props.value as string} alt="preview image" style={styles.upload_preview} />) :
                             (<audio controls src={props.value as string} />)
                         }

@@ -30,7 +30,7 @@ export const checkbox_list: SxProps = {
 }
 
 export const upload_preview: CSSProperties = {
-    width: "auto",
-    height: "200px",
+    width: "100%",
+    height: "auto",
     objectFit: 'cover',
 }

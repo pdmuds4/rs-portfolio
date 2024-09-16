@@ -4,12 +4,11 @@ import { Grid2 } from "@mui/material";
 import { JsonAccordion, JsonProp } from "@components/ui"
 import callAPI from "@utils/callApi";
 
-import { useEventApi, useValidation } from "@components/hook";
+import { useEventApi, useValidation, useS3 } from "@components/hook";
 import BaseError from "@utils/abstruct/error";
 import { ComposeDTO } from "@models/entity/compose";
-import { UploadDTO } from "@usecases/storage/uploadToS3";
-import { DeleteDTO } from "@usecases/storage/deleteFromS3";
 import { Title, Artwork, Genre, Audio, YoutubeUrl, SoundcloudUrl, XUrl } from "@models/value_object/compose";
+import { UploadArtworkUseCase, UploadAudioUseCase, DeleteArtworkUseCase, DeleteAudioUseCase } from "@usecases/compose";
 
 const DataAccordion: React.FC<{
     entity: ComposeDTO,
@@ -21,9 +20,6 @@ const DataAccordion: React.FC<{
 
     const [isCreate, setIsCreate] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
-
-    const [upload_artwork, setUploadArtWork] = useState<UploadDTO|null>(null);
-    const [upload_audio, setUploadAudio] = useState<UploadDTO|null>(null);
 
     // バリデーションチェック
     useValidation(
@@ -45,6 +41,7 @@ const DataAccordion: React.FC<{
         if (props.entity.title === "") {
             setIsCreate(true);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [entity]);
 
     const onEditHandler = (property: any) => {
@@ -60,16 +57,8 @@ const DataAccordion: React.FC<{
                     "DELETE",
                     `/api/compose/${entity.id}`
                 );
-                await callAPI<DeleteDTO, void>(
-                    "DELETE",
-                    "/api/compose/artwork",
-                    {file_url: entity.artwork}
-                );
-                await callAPI<DeleteDTO, void>(
-                    "DELETE",
-                    "/api/compose/audio",
-                    {file_url: entity.audio}
-                );
+                deleteArtwork(entity.artwork);
+                deleteAudio(entity.audio);
             }
             props.onUIDelete();
         }    
@@ -97,46 +86,37 @@ const DataAccordion: React.FC<{
     );
 
     // S3へのアップロード
-    const { eventHandler: uploadArtWork } = useEventApi(
-        async () => {
-            if (upload_artwork) {
-                const response = await callAPI<UploadDTO, {artwork: string}>(
-                    "POST",
-                    "/api/compose/artwork",
-                    upload_artwork
-                );
-                if (response) onEditHandler(response);
-            }
+    const { eventHandler: uploadArtwork } = useS3(
+        async (client, request) => {
+            const usecase = new UploadArtworkUseCase(client, request as File);
+            const response = await usecase.execute();
+            onEditHandler(response);
         }
     );
 
-    const { eventHandler: uploadAudio } = useEventApi(
-        async () => {
-            if (upload_audio) {
-                const response = await callAPI<UploadDTO, {audio: string}>(
-                    "POST",
-                    "/api/compose/audio",
-                    upload_audio
-                );
-                if (response) onEditHandler(response);
-            }
+    const { eventHandler: deleteArtwork } = useS3(
+        async (client, request) => {
+            const usecase = new DeleteArtworkUseCase(client, entity.artwork);
+            await usecase.execute();
+            onEditHandler({artwork: ""});
         }
     );
 
+    const { eventHandler: uploadAudio } = useS3(
+        async (client, request) => {
+            const usecase = new UploadAudioUseCase(client, request as File);
+            const response = await usecase.execute();
+            onEditHandler(response);
+        }
+    );
 
-    const createUploadData = async (file: File, setter: (v: UploadDTO)=>void) => {
-        const arrayBuffer = await file.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        setter({
-            file_buffer: Array.from(buffer), 
-            file_name: file.name,
-        });
-    };
-
-    useEffect(() => {
-        if (upload_artwork) uploadArtWork();
-        if (upload_audio) uploadAudio();
-    }, [upload_artwork, upload_audio]);
+    const { eventHandler: deleteAudio } = useS3(
+        async (client, request) => {
+            const usecase = new DeleteAudioUseCase(client, entity.audio);
+            await usecase.execute();
+            onEditHandler({audio: ""});
+        }
+    );
 
 
     return (
@@ -165,7 +145,8 @@ const DataAccordion: React.FC<{
                     label="artwork" 
                     type="imgfile" 
                     value={entity.artwork}
-                    onChange={(event)=>createUploadData(event.target.files[0], setUploadArtWork)}
+                    onChange={(event)=>uploadArtwork(event.target.files[0])}
+                    onDelete={(event) => deleteArtwork(entity.artwork)}
                     error={error?.class_name === "Artwork"}
                 />
                 <JsonProp 
@@ -181,7 +162,8 @@ const DataAccordion: React.FC<{
                     label="audio" 
                     type="audiofile" 
                     value={entity.audio}
-                    onChange={(event)=>createUploadData(event.target.files[0], setUploadAudio)}
+                    onChange={(event)=>uploadAudio(event.target.files[0])}
+                    onDelete={(event) => deleteAudio(entity.audio)}
                     error={error?.class_name === "Audio"}
                 />
                 <JsonProp 

@@ -36,6 +36,7 @@ const DataAccordion: React.FC<{
         if (props.entity.title === "") {
             setIsCreate(true);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [entity]);
 
     const onEditHandler = (property: any) => {
