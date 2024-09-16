@@ -31,5 +31,6 @@ export const useGetterApi = <ResponseT>(
                     setOpenError(true);
                 }
             });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 }

@@ -4,13 +4,12 @@ import { Grid2 } from "@mui/material";
 import { JsonAccordion, JsonProp } from "@components/ui"
 import callAPI from "@utils/callApi";
 
-import { useEventApi, useValidation } from "@components/hook";
+import { useEventApi, useValidation, useS3 } from "@components/hook";
 import BaseError from "@utils/abstruct/error";
 import { WorksDTO } from "@models/entity/works";
 import { SkillsDTO } from "@models/entity/skills";
-import { UploadDTO } from "@usecases/storage/uploadToS3";
-import { DeleteDTO } from "@usecases/storage/deleteFromS3";
 import { Title, Thumbnail, Description, Repository, Link, Status, Created } from "@models/value_object/works";
+import { UploadThumbnailUseCase, DeleteThumbnailUseCase } from "@usecases/works";
 
 const DataAccordion: React.FC<{
     entity: WorksDTO,
@@ -24,7 +23,6 @@ const DataAccordion: React.FC<{
     const [isCreate, setIsCreate] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
-    const [upload_data, setUploadData] = useState<UploadDTO|null>(null);
 
     // バリデーションチェック
     useValidation(
@@ -46,6 +44,7 @@ const DataAccordion: React.FC<{
         if (props.entity.title === "") {
             setIsCreate(true);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [entity]);
 
     const onEditHandler = (property: any) => {
@@ -61,11 +60,8 @@ const DataAccordion: React.FC<{
                     "DELETE",
                     "/api/works?id=" + entity.id,
                 );
-                await callAPI<DeleteDTO, void>(
-                    "DELETE",
-                    "/api/works/thumbnail",
-                    {file_url: entity.thumbnail}
-                );
+                // S3からの削除
+                deleteThumbnail(entity.thumbnail);
             }
             props.onUIDelete();
         }
@@ -93,33 +89,21 @@ const DataAccordion: React.FC<{
     );
 
     // S3へのアップロード
-
-    const { eventHandler: uploadFile } = useEventApi(
-        async () => {
-            if (upload_data) {
-                const response = await callAPI<UploadDTO, {thumbnail: string}>(
-                    "POST",
-                    "/api/works/thumbnail",
-                    upload_data
-                );
-                if (response) onEditHandler(response);
-            }
+    const { eventHandler: uploadThumbnail } = useS3(
+        async (client, request) => {
+            const usecase = new UploadThumbnailUseCase(client, request as File);
+            const response = await usecase.execute();
+            onEditHandler(response);
         }
     );
 
-    const createUploadData = async (file: File) => {
-        const arrayBuffer = await file.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        setUploadData({
-            file_buffer: Array.from(buffer), 
-            file_name: file.name,
-        });
-    };
-
-    useEffect(() => {
-        if (upload_data) uploadFile();
-    }, [upload_data]);
-
+    const { eventHandler: deleteThumbnail } = useS3(
+        async (client, request) => {
+            const usecase = new DeleteThumbnailUseCase(client, entity.thumbnail);
+            await usecase.execute();
+            onEditHandler({thumbnail: ""});
+        }
+    );
 
     return (
         <JsonAccordion
@@ -147,7 +131,8 @@ const DataAccordion: React.FC<{
                     label="thumnail" 
                     type="imgfile"
                     value={entity.thumbnail}
-                    onChange={(event) => createUploadData(event.target.files[0])}
+                    onChange={(event) => uploadThumbnail(event.target.files[0])}
+                    onDelete={(event) => deleteThumbnail(entity.thumbnail)}
                     error={error?.class_name === "Thumbnail"}
                 />
                 <JsonProp 
