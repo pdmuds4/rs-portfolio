@@ -152,7 +152,13 @@ const DataAccordion: React.FC<{
                     label="techs" 
                     type="array" 
                     value={entity.techs}
-                    onChange={(skill_id)=>onEditHandler({techs: [...entity.techs, skill_id]})}
+                    onChange={(skill_id)=>{
+                        if (entity.techs.includes(skill_id)) {
+                            onEditHandler({techs: entity.techs.filter((id)=>id !== skill_id)});
+                        } else {
+                            onEditHandler({techs: [...entity.techs, skill_id]});
+                        }
+                    }}
                     skills_data={props.skills_data}
                 />
                 <JsonProp 
